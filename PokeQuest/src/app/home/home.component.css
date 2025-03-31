@@ -1,0 +1,129 @@
+h1 {
+     
+    font-size: 3rem; 
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+h2 {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 3rem; 
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* Estilo para la parte "Poke" */
+.poke {
+    margin-top: 40px;
+    margin-left: 40px;
+    color:  #DE0A0A;
+}
+
+/* Estilo para la parte "Quest" */
+.quest {
+    margin-top: 40px;
+    color: #8E8E8E;
+
+}
+.pokedex {
+    color: #8E8E8E;
+    font-size: 20px;
+    margin-left: 390px;
+    
+}
+.trivia {
+    color: #8E8E8E;
+    font-size: 20px;
+    margin-left: 390px;
+
+    
+}
+
+/* Contenedor de la barra de búsqueda */
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 25px;
+    
+}
+
+/* Estilo de la barra de búsqueda */
+.search-bar {
+    width: 800px;
+    padding: 20px 20px;
+    border-radius: 15px; /* Bordes redondeados */
+    border: 2px solid #ccc; /* Bordes delgados */
+    font-size: 20px;
+    font-family: "Press Start 2P", system-ui;
+    outline: none;
+    transition: border-color 0.3s ease;
+    
+}
+
+/* Estilo para cuando el input está en foco (cuando se hace click en él) */
+.search-bar:focus {
+    border-color: #76a5af; /* Color más visible cuando está enfocado */
+    box-shadow: 0 0 10px rgba(118, 165, 175, 0.5); /* Sombra sutil */
+}
+
+/* Placeholder del input */
+.search-bar::placeholder {
+    color: #8E8E8E;
+    font-style: italic;
+}
+ hr.separator {
+width: 100%;  /* La línea ocupa todo el ancho de la página */
+border: none; /* Elimina los bordes predeterminados */
+height: 4px;  /* El grosor de la línea */
+background-color: #8E8E8E; 
+margin-top: 60px; 
+margin-left: 0; 
+margin-right: 0;
+ }
+
+ .container {
+    width: 250px;
+    margin: 20px auto; /* Esto centra los contenedores */
+}
+/* Estilo para el primer dropdown */
+#filter {
+    margin-left: 150px; /* Mueve el primer dropdown 50px hacia la derecha */
+}
+
+/* Estilo para el segundo dropdown */
+#habilidad {
+    margin-left: 900px; /* Mueve el segundo dropdown más a la derecha*/
+    margin-top: -1150px;
+}
+
+/* Estilo para las etiquetas */
+.filter-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilo para los dropdowns */
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+
+}
+
+/* Efectos visuales cuando el dropdown es activado */
+.dropdown:focus {
+    outline: none;
+    border-color: #4CAF50;
+}

@@ -1,1 +1,86 @@
-<p>home works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="home.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div style="position: relative;">
+        <h1 style=" position: absolute; top: -60px;"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+        <hr class = "separator" style = "margin-top: 100px;">
+
+        
+
+                <img src = "https://cdn-icons-png.flaticon.com/512/287/287223.png" alt = "icono pokedex" style= "position:absolute; top:-80px; right: 210px; width:50px; height: 50px;">
+                <h2 style="position: absolute; margin-left: 1190px; margin-top: -50px;"><span class = "pokedex">Pokedex</span></h2>
+        
+                <img src = " https://cdn-icons-png.flaticon.com/256/1033/1033032.png" alt = "icono trivia" style= "position:absolute; top:-80px; right: 450px; width:50px; height: 50px;">
+                <h2 style="position: absolute; margin-left: 955px; margin-top: -50px;"><span class = "trivia">Trivia</span></h2>
+                
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Buscar pokemón o fruta">
+                </div>
+
+                <div class="container">
+                   
+                    <select id="filter" class="dropdown">
+                        
+                        <option value="" disabled selected>tipo</option>
+                        <option value="normal">Normal</option>
+                        <option value="luchador">Luchador</option>
+                        <option value="volador">Volador</option>
+                        <option value="veneno">Veneno</option>
+                        <option value="tierra">Tierra</option>
+                        <option value="roca">Roca</option>
+                        <option value="insecto">Insecto</option>
+                        <option value="fantasma">Fantasma</option>
+                        <option value="acero">Acero</option>
+                        <option value="fuego">Fuego</option>
+                        <option value="agua">Agua</option>
+                        <option value="hierba">Hierba</option>
+                        <option value="electrico">Electrico</option>
+                        <option value="psiquico">Psiquico</option>
+                        <option value="hielo">Hielo</option>
+                        <option value="dragon">Dragon</option>
+                        <option value="oscuro">Oscuro</option>
+                        <option value="hada">Hada</option>
+                    </select>
+                </div>
+                
+                <div class="container">
+                   
+                    <select id="habilidad" class="dropdown">
+                        <!-- Opción predeterminada -->
+                        <option value="" disabled selected>habilidad</option>
+                        <!-- Habilidades Pokémon -->
+                        <option value="adaptabilidad">Adaptabilidad</option>
+                        <option value="aerilize">Aerilización</option>
+                        <option value="restos">Restos</option>
+                        <option value="anticipacion">Anticipación</option>
+                        <option value="arena_grande">Arena Grande</option>
+                        <option value="abrasivo">Abrasivo</option>
+                        <option value="clorofila">Clorofila</option>
+                        <option value="cuerpo_claro">Cuerpo Claro</option>
+                        <option value="nube">Nube</option>
+                        <option value="descarga">Descarga</option>
+                        <option value="prisa">Prisa</option>
+                        <option value="cuerpo_llama">Cuerpo Llama</option>
+                        <option value="inmunidad">Inmunidad</option>
+                        <option value="levitacion">Levitación</option>
+                        <option value="mimetismo">Mimetismo</option>
+                        <option value="melancolia">Melancolía</option>
+                        <option value="multiescala">Multiescala</option>
+                        <option value="travesura">Travesura</option>
+                        <option value="nado_rapido">Nado Rápido</option>
+                    </select>
+                </div>
+</div>
+</body>
+</html>
