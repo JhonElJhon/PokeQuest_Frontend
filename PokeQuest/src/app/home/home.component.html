@@ -1,86 +1,111 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" href="home.component.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-</head>
-<body>
-
-    <div style="position: relative;">
-        <h1 style=" position: absolute; top: -60px;"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
-        <hr class = "separator" style = "margin-top: 100px;">
-
-        
-
-                <img src = "https://cdn-icons-png.flaticon.com/512/287/287223.png" alt = "icono pokedex" style= "position:absolute; top:-80px; right: 210px; width:50px; height: 50px;">
-                <h2 style="position: absolute; margin-left: 1190px; margin-top: -50px;"><span class = "pokedex">Pokedex</span></h2>
-        
-                <img src = " https://cdn-icons-png.flaticon.com/256/1033/1033032.png" alt = "icono trivia" style= "position:absolute; top:-80px; right: 450px; width:50px; height: 50px;">
-                <h2 style="position: absolute; margin-left: 955px; margin-top: -50px;"><span class = "trivia">Trivia</span></h2>
-                
-                <div class="search-container">
-                    <input type="text" class="search-bar" placeholder="Buscar pokemón o fruta">
+    <link rel="stylesheet" href="home.component.css" />
+  </head>
+  <body>
+    <div class="HOMEPAGE">
+        <div class="overlap-wrapper">
+          <div class="overlap">
+            <div class="COLOR-FONDO"></div>
+            <header class="NOMBRE-y-SEPARADOR">
+              <h1 class="POKEQUEST"><span class="text-wrapper">POKE</span> <span class="span">QUEST</span></h1>
+              <img class="line" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/line-1.svg" alt="Separator" />
+            </header>
+            <nav class="BOTONES-INICIALES">
+              <img class="image" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-2.png" alt="Pokedex icon" />
+              <div class="div">Pokedex</div>
+              <div class="text-wrapper-2">Trivia</div>
+              <img class="img" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-3.png" alt="Trivia icon" />
+            </nav>
+            <div class="BARRA-DE-BUSQUEDA">
+              <div class="overlap-group">
+                <input type="text" class="rectangle" placeholder="Buscar pokemón">
+                <button class="group"><img class="image-2" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image.png" alt="Search" /></button>
+              </div>
+            </div>
+            <div class="filters">
+              <div class="FILTRO">
+                <div class="overlap-9">
+                  <div class="text-wrapper-22">Tipo</div>
+                  <img class="polygon" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/polygon-2.svg" alt="Dropdown" />
                 </div>
-
-                <div class="container">
-                   
-                    <select id="filter" class="dropdown">
-                        
-                        <option value="" disabled selected>tipo</option>
-                        <option value="normal">Normal</option>
-                        <option value="luchador">Luchador</option>
-                        <option value="volador">Volador</option>
-                        <option value="veneno">Veneno</option>
-                        <option value="tierra">Tierra</option>
-                        <option value="roca">Roca</option>
-                        <option value="insecto">Insecto</option>
-                        <option value="fantasma">Fantasma</option>
-                        <option value="acero">Acero</option>
-                        <option value="fuego">Fuego</option>
-                        <option value="agua">Agua</option>
-                        <option value="hierba">Hierba</option>
-                        <option value="electrico">Electrico</option>
-                        <option value="psiquico">Psiquico</option>
-                        <option value="hielo">Hielo</option>
-                        <option value="dragon">Dragon</option>
-                        <option value="oscuro">Oscuro</option>
-                        <option value="hada">Hada</option>
-                    </select>
+              </div>
+              <div class="overlap-group-wrapper">
+                <div class="overlap-10">
+                  <div class="text-wrapper-23">....</div>
+                  <img class="polygon-2" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/polygon-2.svg" alt="Dropdown" />
                 </div>
-                
-                <div class="container">
-                   
-                    <select id="habilidad" class="dropdown">
-                        <!-- Opción predeterminada -->
-                        <option value="" disabled selected>habilidad</option>
-                        <!-- Habilidades Pokémon -->
-                        <option value="adaptabilidad">Adaptabilidad</option>
-                        <option value="aerilize">Aerilización</option>
-                        <option value="restos">Restos</option>
-                        <option value="anticipacion">Anticipación</option>
-                        <option value="arena_grande">Arena Grande</option>
-                        <option value="abrasivo">Abrasivo</option>
-                        <option value="clorofila">Clorofila</option>
-                        <option value="cuerpo_claro">Cuerpo Claro</option>
-                        <option value="nube">Nube</option>
-                        <option value="descarga">Descarga</option>
-                        <option value="prisa">Prisa</option>
-                        <option value="cuerpo_llama">Cuerpo Llama</option>
-                        <option value="inmunidad">Inmunidad</option>
-                        <option value="levitacion">Levitación</option>
-                        <option value="mimetismo">Mimetismo</option>
-                        <option value="melancolia">Melancolía</option>
-                        <option value="multiescala">Multiescala</option>
-                        <option value="travesura">Travesura</option>
-                        <option value="nado_rapido">Nado Rápido</option>
-                    </select>
+              </div>
+            </div>
+            <div class="pokemon-grid">
+              <div class="pokemon-card PIPLUP">
+                <div class="overlap-2">
+                  <div class="overlap-group-2">
+                    <img class="image-3" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-4.png" alt="Piplup" />
+                    <div class="text-wrapper-4">Nº393</div>
+                  </div>
+                  <div class="text-wrapper-5">Piplup</div>
+                  <div class="div-wrapper"><div class="text-wrapper-6">Agua</div></div>
                 </div>
-</div>
-</body>
-</html>
+              </div>
+              <div class="pokemon-card CHARIZARD">
+                <div class="overlap-2">
+                  <div class="overlap-3">
+                    <img class="image-4" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-5.png" alt="Charizard" />
+                    <div class="text-wrapper-7">Charizard</div>
+                    <div class="text-wrapper-8">Nº006</div>
+                  </div>
+                  <div class="overlap-group-3"><div class="text-wrapper-9">Fuego</div></div>
+                </div>
+              </div>
+              <div class="pokemon-card BULBASAUR">
+                <div class="overlap-2">
+                  <div class="overlap-group-4">
+                    <div class="text-wrapper-10">Bulbasaur</div>
+                    <img class="image-5" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-6.png" alt="Bulbasaur" />
+                    <div class="text-wrapper-11">Nº001</div>
+                  </div>
+                  <div class="overlap-4"><div class="text-wrapper-12">Planta</div></div>
+                </div>
+              </div>
+              <div class="pokemon-card GRENINJA">
+                <div class="overlap-2">
+                  <div class="text-wrapper-13">Greninja</div>
+                  <div class="overlap-group-5"><div class="text-wrapper-14">Siniestro</div></div>
+                  <div class="overlap-5"><div class="text-wrapper-6">Agua</div></div>
+                  <div class="overlap-6">
+                    <div class="text-wrapper-15">Nº0658</div>
+                    <img class="image-6" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-10.png" alt="Greninja" />
+                  </div>
+                </div>
+              </div>
+              <div class="pokemon-card CUBONE">
+                <div class="overlap-2">
+                  <div class="text-wrapper-16">Cubone</div>
+                  <div class="overlap-7"><div class="text-wrapper-17">Tierra</div></div>
+                  <div class="overlap-group-6">
+                    <div class="text-wrapper-18">Nº104</div>
+                    <img class="image-7" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-11.png" alt="Cubone" />
+                  </div>
+                </div>
+              </div>
+              <div class="pokemon-card SNORLAX">
+                <div class="overlap-8">
+                  <div class="rectangle-2"></div>
+                  <div class="text-wrapper-19">Snorlax</div>
+                  <div class="rectangle-3"></div>
+                  <div class="text-wrapper-20">Nº143</div>
+                  <div class="text-wrapper-21">Normal</div>
+                  <img class="image-8" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-12.png" alt="Snorlax" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+  

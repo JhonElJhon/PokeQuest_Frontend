@@ -1,129 +1,745 @@
-h1 {
-     
-    font-size: 3rem; 
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-h2 {
-    font-family: "Press Start 2P", system-ui;
-    font-size: 3rem; 
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-/* Estilo para la parte "Poke" */
-.poke {
-    margin-top: 40px;
-    margin-left: 40px;
-    color:  #DE0A0A;
-}
-
-/* Estilo para la parte "Quest" */
-.quest {
-    margin-top: 40px;
-    color: #8E8E8E;
-
-}
-.pokedex {
-    color: #8E8E8E;
-    font-size: 20px;
-    margin-left: 390px;
-    
-}
-.trivia {
-    color: #8E8E8E;
-    font-size: 20px;
-    margin-left: 390px;
-
-    
-}
-
-/* Contenedor de la barra de búsqueda */
-.search-container {
+.HOMEPAGE {
+    background-color: #d7e8ffbf;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: 25px;
-    
-}
-
-/* Estilo de la barra de búsqueda */
-.search-bar {
-    width: 800px;
-    padding: 20px 20px;
-    border-radius: 15px; /* Bordes redondeados */
-    border: 2px solid #ccc; /* Bordes delgados */
-    font-size: 20px;
-    font-family: "Press Start 2P", system-ui;
-    outline: none;
-    transition: border-color 0.3s ease;
-    
-}
-
-/* Estilo para cuando el input está en foco (cuando se hace click en él) */
-.search-bar:focus {
-    border-color: #76a5af; /* Color más visible cuando está enfocado */
-    box-shadow: 0 0 10px rgba(118, 165, 175, 0.5); /* Sombra sutil */
-}
-
-/* Placeholder del input */
-.search-bar::placeholder {
-    color: #8E8E8E;
-    font-style: italic;
-}
- hr.separator {
-width: 100%;  /* La línea ocupa todo el ancho de la página */
-border: none; /* Elimina los bordes predeterminados */
-height: 4px;  /* El grosor de la línea */
-background-color: #8E8E8E; 
-margin-top: 60px; 
-margin-left: 0; 
-margin-right: 0;
- }
-
- .container {
-    width: 250px;
-    margin: 20px auto; /* Esto centra los contenedores */
-}
-/* Estilo para el primer dropdown */
-#filter {
-    margin-left: 150px; /* Mueve el primer dropdown 50px hacia la derecha */
-}
-
-/* Estilo para el segundo dropdown */
-#habilidad {
-    margin-left: 900px; /* Mueve el segundo dropdown más a la derecha*/
-    margin-top: -1150px;
-}
-
-/* Estilo para las etiquetas */
-.filter-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Estilo para los dropdowns */
-.dropdown {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    color: #333;
-    cursor: pointer;
-
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-/* Efectos visuales cuando el dropdown es activado */
-.dropdown:focus {
-    outline: none;
-    border-color: #4CAF50;
+  .HOMEPAGE .overlap-wrapper {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 100%; /* Ahora ocupa todo el ancho */
+    height: 100%; /* Ahora ocupa toda la altura */
+    max-width: 1440px; /* Máximo ancho si es necesario */
+    max-height: 1024px; /* Máxima altura si es necesario */
+  }
+  
+  .HOMEPAGE .overlap {
+    position: relative;
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura */
+  }
+  
+  .HOMEPAGE .COLOR-FONDO {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #d7e8ffbf;
 }
+  
+.HOMEPAGE .NOMBRE-y-SEPARADOR {
+    position: absolute;
+    width: 100%;
+    max-width: 1440px;
+    height: 74px;
+    top: 44px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .HOMEPAGE .POKEQUEST {
+    position: absolute;
+    width: 440px;
+    top: 0;
+    left: 35px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  
+  
+  .HOMEPAGE .text-wrapper {
+    color: #de0a0a;
+  }
+  
+  .HOMEPAGE .span {
+    color: #8e8e8e;
+  }
+  
+  .HOMEPAGE .line {
+    position: absolute;
+    width: 1440px;
+    height: 5px;
+    top: 69px;
+    left: 0;
+  }
+  
+  .HOMEPAGE .BOTONES-INICIALES {
+    position: absolute;
+    width: 316px;
+    height: 95px;
+    top: 5px;
+    left: 1006px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .HOMEPAGE .image {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    left: 212px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .div {
+    position: absolute;
+    top: 72px;
+    left: 172px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ec3737;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .text-wrapper-2 {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    left: 30px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .BARRA-DE-BUSQUEDA {
+    position: absolute;
+    width: 912px;
+    height: 64px;
+    top: 170px;
+    left: 47px;
+  }
+  
+  .HOMEPAGE .overlap-group {
+    position: relative;
+    width: 910px;
+    height: 64px;
+  }
+  
+  .HOMEPAGE .rectangle {
+    position: absolute;
+    width: 856px;
+    height: 64px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 25px;
+    border: 1px solid;
+    border-color: #000000;
+  }
+  
+  .HOMEPAGE .text-wrapper-3 {
+    position: absolute;
+    width: 873px;
+    top: 22px;
+    left: 37px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #a8a8a8;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .group {
+    position: absolute;
+    width: 53px;
+    height: 46px;
+    top: 7px;
+    left: 795px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+  }
+  
+  .HOMEPAGE .image-2 {
+    position: absolute;
+    width: 37px;
+    height: 38px;
+    top: 4px;
+    left: 8px;
+  }
+  
+  .HOMEPAGE .PIPLUP {
+    position: absolute;
+    width: 311px;
+    height: 252px;
+    top: 320px;
+    left: 47px;
+  }
+  
+  .HOMEPAGE .overlap-2 {
+    position: relative;
+    width: 305px;
+    height: 252px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .HOMEPAGE .overlap-group-2 {
+    position: absolute;
+    width: 194px;
+    height: 165px;
+    top: 15px;
+    left: 18px;
+  }
+  
+  .HOMEPAGE .image-3 {
+    position: absolute;
+    width: 109px;
+    height: 165px;
+    top: 0;
+    left: 85px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .text-wrapper-4 {
+    position: absolute;
+    width: 124px;
+    top: 0;
+    left: 0;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .text-wrapper-5 {
+    position: absolute;
+    width: 120px;
+    top: 180px;
+    left: 93px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .div-wrapper {
+    position: absolute;
+    width: 90px;
+    height: 23px;
+    top: 205px;
+    left: 108px;
+    background-color: #2d599a;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-6 {
+    position: absolute;
+    width: 56px;
+    top: 4px;
+    left: 17px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .CHARIZARD {
+    position: absolute;
+    width: 311px;
+    height: 252px;
+    top: 320px;
+    left: 545px;
+  }
+  
+  .HOMEPAGE .overlap-3 {
+    position: absolute;
+    width: 251px;
+    height: 193px;
+    top: 9px;
+    left: 16px;
+  }
+  
+  .HOMEPAGE .image-4 {
+    position: absolute;
+    width: 250px;
+    height: 181px;
+    top: 0;
+    left: 1px;
+  }
+  
+  .HOMEPAGE .text-wrapper-7 {
+    position: absolute;
+    width: 184px;
+    top: 173px;
+    left: 45px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .text-wrapper-8 {
+    position: absolute;
+    width: 124px;
+    top: 6px;
+    left: 0;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .overlap-group-3 {
+    position: absolute;
+    width: 90px;
+    height: 23px;
+    top: 205px;
+    left: 114px;
+    background-color: #de0a0a;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-9 {
+    position: absolute;
+    width: 73px;
+    top: 3px;
+    left: 8px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .BULBASAUR {
+    position: absolute;
+    width: 311px;
+    height: 252px;
+    top: 320px;
+    left: 1045px;
+  }
+  
+  .HOMEPAGE .overlap-group-4 {
+    position: absolute;
+    width: 231px;
+    height: 187px;
+    top: 15px;
+    left: 19px;
+  }
+  
+  .HOMEPAGE .text-wrapper-10 {
+    position: absolute;
+    width: 184px;
+    top: 167px;
+    left: 47px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .image-5 {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    top: 0;
+    left: 51px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .text-wrapper-11 {
+    position: absolute;
+    width: 124px;
+    top: 2px;
+    left: 0;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .overlap-4 {
+    position: absolute;
+    width: 98px;
+    height: 23px;
+    top: 208px;
+    left: 109px;
+    background-color: #387453;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-12 {
+    position: absolute;
+    width: 86px;
+    top: 3px;
+    left: 8px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .GRENINJA {
+    position: absolute;
+    width: 313px;
+    height: 252px;
+    top: 635px;
+    left: 47px;
+  }
+  
+  .HOMEPAGE .text-wrapper-13 {
+    position: absolute;
+    width: 166px;
+    top: 177px;
+    left: 68px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .overlap-group-5 {
+    position: absolute;
+    width: 134px;
+    height: 23px;
+    top: 205px;
+    left: 140px;
+    background-color: #343434;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-14 {
+    position: absolute;
+    width: 129px;
+    top: 5px;
+    left: 5px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .overlap-5 {
+    position: absolute;
+    width: 90px;
+    height: 23px;
+    top: 205px;
+    left: 35px;
+    background-color: #2d599a;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .overlap-6 {
+    position: absolute;
+    width: 255px;
+    height: 155px;
+    top: 14px;
+    left: 23px;
+  }
+  
+  .HOMEPAGE .text-wrapper-15 {
+    position: absolute;
+    width: 124px;
+    top: 0;
+    left: 2px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .image-6 {
+    position: absolute;
+    width: 255px;
+    height: 142px;
+    top: 13px;
+    left: 0;
+  }
+  
+  .HOMEPAGE .CUBONE {
+    position: absolute;
+    width: 311px;
+    height: 252px;
+    top: 635px;
+    left: 545px;
+  }
+  
+  .HOMEPAGE .text-wrapper-16 {
+    position: absolute;
+    width: 184px;
+    top: 188px;
+    left: 90px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .overlap-7 {
+    position: absolute;
+    width: 92px;
+    height: 23px;
+    top: 214px;
+    left: 106px;
+    background-color: #de7b0a;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-17 {
+    position: absolute;
+    width: 88px;
+    top: 5px;
+    left: 4px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .overlap-group-6 {
+    position: absolute;
+    width: 231px;
+    height: 176px;
+    top: 6px;
+    left: 14px;
+  }
+  
+  .HOMEPAGE .text-wrapper-18 {
+    position: absolute;
+    width: 124px;
+    top: 18px;
+    left: 0;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .image-7 {
+    position: absolute;
+    width: 190px;
+    height: 176px;
+    top: 0;
+    left: 41px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .SNORLAX {
+    position: absolute;
+    width: 311px;
+    height: 258px;
+    top: 629px;
+    left: 1045px;
+  }
+  
+  .HOMEPAGE .overlap-8 {
+    position: relative;
+    width: 305px;
+    height: 258px;
+  }
+  
+  .HOMEPAGE .rectangle-2 {
+    position: absolute;
+    width: 305px;
+    height: 252px;
+    top: 6px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .HOMEPAGE .text-wrapper-19 {
+    position: absolute;
+    width: 184px;
+    top: 188px;
+    left: 66px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .rectangle-3 {
+    position: absolute;
+    width: 98px;
+    height: 23px;
+    top: 214px;
+    left: 109px;
+    background-color: #a8a8a8;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-20 {
+    position: absolute;
+    width: 124px;
+    top: 30px;
+    left: 12px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .HOMEPAGE .text-wrapper-21 {
+    position: absolute;
+    width: 86px;
+    top: 217px;
+    left: 117px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .image-8 {
+    position: absolute;
+    width: 204px;
+    height: 204px;
+    top: 0;
+    left: 51px;
+    object-fit: cover;
+  }
+  
+  .HOMEPAGE .FILTRO {
+    width: 121px;
+    left: 996px;
+    position: absolute;
+    height: 27px;
+    top: 188px;
+  }
+  
+  .HOMEPAGE .overlap-9 {
+    position: relative;
+    width: 119px;
+    height: 27px;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-22 {
+    position: absolute;
+    top: 4px;
+    left: 13px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #818181;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .polygon {
+    left: 98px;
+    position: absolute;
+    width: 13px;
+    height: 10px;
+    top: 12px;
+  }
+  
+  .HOMEPAGE .overlap-group-wrapper {
+    width: 210px;
+    left: 1142px;
+    position: absolute;
+    height: 27px;
+    top: 188px;
+  }
+  
+  .HOMEPAGE .overlap-10 {
+    position: relative;
+    width: 208px;
+    height: 27px;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .HOMEPAGE .text-wrapper-23 {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-family: "Press Start 2P", Helvetica;
+    font-weight: 400;
+    color: #8e8e8e;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .HOMEPAGE .polygon-2 {
+    left: 188px;
+    position: absolute;
+    width: 13px;
+    height: 10px;
+    top: 12px;
+  }
+  
