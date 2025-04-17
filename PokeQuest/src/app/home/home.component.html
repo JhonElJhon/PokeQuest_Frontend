@@ -1,111 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.component.css" />
-  </head>
-  <body>
-    <div class="HOMEPAGE">
-        <div class="overlap-wrapper">
-          <div class="overlap">
-            <div class="COLOR-FONDO"></div>
-            <header class="NOMBRE-y-SEPARADOR">
-              <h1 class="POKEQUEST"><span class="text-wrapper">POKE</span> <span class="span">QUEST</span></h1>
-              <img class="line" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/line-1.svg" alt="Separator" />
-            </header>
-            <nav class="BOTONES-INICIALES">
-              <img class="image" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-2.png" alt="Pokedex icon" />
-              <div class="div">Pokedex</div>
-              <div class="text-wrapper-2">Trivia</div>
-              <img class="img" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-3.png" alt="Trivia icon" />
-            </nav>
-            <div class="BARRA-DE-BUSQUEDA">
-              <div class="overlap-group">
-                <input type="text" class="rectangle" placeholder="Buscar pokemón">
-                <button class="group"><img class="image-2" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image.png" alt="Search" /></button>
-              </div>
-            </div>
-            <div class="filters">
-              <div class="FILTRO">
-                <div class="overlap-9">
-                  <div class="text-wrapper-22">Tipo</div>
-                  <img class="polygon" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/polygon-2.svg" alt="Dropdown" />
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-10">
-                  <div class="text-wrapper-23">....</div>
-                  <img class="polygon-2" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/polygon-2.svg" alt="Dropdown" />
-                </div>
-              </div>
-            </div>
-            <div class="pokemon-grid">
-              <div class="pokemon-card PIPLUP">
-                <div class="overlap-2">
-                  <div class="overlap-group-2">
-                    <img class="image-3" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-4.png" alt="Piplup" />
-                    <div class="text-wrapper-4">Nº393</div>
-                  </div>
-                  <div class="text-wrapper-5">Piplup</div>
-                  <div class="div-wrapper"><div class="text-wrapper-6">Agua</div></div>
-                </div>
-              </div>
-              <div class="pokemon-card CHARIZARD">
-                <div class="overlap-2">
-                  <div class="overlap-3">
-                    <img class="image-4" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-5.png" alt="Charizard" />
-                    <div class="text-wrapper-7">Charizard</div>
-                    <div class="text-wrapper-8">Nº006</div>
-                  </div>
-                  <div class="overlap-group-3"><div class="text-wrapper-9">Fuego</div></div>
-                </div>
-              </div>
-              <div class="pokemon-card BULBASAUR">
-                <div class="overlap-2">
-                  <div class="overlap-group-4">
-                    <div class="text-wrapper-10">Bulbasaur</div>
-                    <img class="image-5" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-6.png" alt="Bulbasaur" />
-                    <div class="text-wrapper-11">Nº001</div>
-                  </div>
-                  <div class="overlap-4"><div class="text-wrapper-12">Planta</div></div>
-                </div>
-              </div>
-              <div class="pokemon-card GRENINJA">
-                <div class="overlap-2">
-                  <div class="text-wrapper-13">Greninja</div>
-                  <div class="overlap-group-5"><div class="text-wrapper-14">Siniestro</div></div>
-                  <div class="overlap-5"><div class="text-wrapper-6">Agua</div></div>
-                  <div class="overlap-6">
-                    <div class="text-wrapper-15">Nº0658</div>
-                    <img class="image-6" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-10.png" alt="Greninja" />
-                  </div>
-                </div>
-              </div>
-              <div class="pokemon-card CUBONE">
-                <div class="overlap-2">
-                  <div class="text-wrapper-16">Cubone</div>
-                  <div class="overlap-7"><div class="text-wrapper-17">Tierra</div></div>
-                  <div class="overlap-group-6">
-                    <div class="text-wrapper-18">Nº104</div>
-                    <img class="image-7" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-11.png" alt="Cubone" />
-                  </div>
-                </div>
-              </div>
-              <div class="pokemon-card SNORLAX">
-                <div class="overlap-8">
-                  <div class="rectangle-2"></div>
-                  <div class="text-wrapper-19">Snorlax</div>
-                  <div class="rectangle-3"></div>
-                  <div class="text-wrapper-20">Nº143</div>
-                  <div class="text-wrapper-21">Normal</div>
-                  <img class="image-8" src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-12.png" alt="Snorlax" />
-                </div>
-              </div>
-            </div>
-          </div>
+    <title>POKEQUEST</title>
+    <link rel="stylesheet" href="home.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+    <nav>
+        <ul>
+            <li><a href="#">Trivia</a></li>
+            <li><a href="#">Pokédex</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar pokémon...">
+            <select>
+                <option value="">Tipo...</option>
+                <option value="agua">Agua</option>
+                <option value="fuego">Fuego</option>
+                <option value="planta">Planta</option>
+                <option value="siniestro">Siniestro</option>
+                <option value="tierra">Tierra</option>
+                <option value="normal">Normal</option>
+            </select>
         </div>
-      </div>
-    </body>
-  </html>
-  
+        <div class="pokemon-grid">
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-4.png" alt="Piplup">
+                <h2>N°393</h2>
+                <p>Piplup</p>
+                <span class="type agua">Agua</span>
+            </div>
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-5.png" alt="Charizard">
+                <h2>N°006</h2>
+                <p>Charizard</p>
+                <span class="type fuego">Fuego</span>
+            </div>
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-6.png" alt="Bulbasaur">
+                <h2>N°001</h2>
+                <p>Bulbasaur</p>
+                <span class="type planta">Planta</span>
+            </div>
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-10.png" alt="Greninja">
+                <h2>N°0658</h2>
+                <p>Greninja</p>
+                <div class="types-container">
+                    <span class="type agua">Agua</span>
+                    <span class="type siniestro">Siniestro</span>
+                </div>
+            </div>
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-11.png" alt="Cubone">
+                <h2>N°104</h2>
+                <p>Cubone</p>
+                <span class="type tierra">Tierra</span>
+            </div>
+            <div class="pokemon-card">
+                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-12.png" alt="Snorlax">
+                <h2>N°143</h2>
+                <p>Snorlax</p>
+                <span class="type normal">Normal</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
