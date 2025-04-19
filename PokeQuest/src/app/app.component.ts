@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
+import { BerryHomeComponent } from './berry.home/berry.home.component';
+import { AbilitiesHomeComponent } from './abilities.home/abilities.home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, RouterModule],
+  imports: [RouterOutlet, HomeComponent, RouterModule, BerryHomeComponent, AbilitiesHomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
