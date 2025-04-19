@@ -1,0 +1,225 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font-family: 'Press Start 2P', Helvetica;
+  background-color: #D8E9FF;
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #A7C7E7;
+  border-bottom: 8px solid #C5C5C5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.8em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  display: inline-block; /* Para que los spans se alineen correctamente */
+}
+
+h1 .poke {
+  color: #DE0A0A; /* Rojo Pokémon */
+}
+
+h1 .quest {
+  color: #8E8E8E; /* Gris especificado */
+}
+h1 .poke,
+h1 .quest {
+  -webkit-text-stroke: 2px black; /* Para compatibilidad con navegadores WebKit */
+  text-stroke: 2px black; /* Borde negro de 2px */
+  paint-order: stroke fill; /* Asegura que el borde se dibuje detrás del relleno */
+}
+
+/* Ajuste para que el borde no corte las letras */
+h1 {
+  letter-spacing: 2px; /* Compensa el grosor del borde */
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #DE0A0A;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 20px;
+  gap: 10px;
+  font-family: 'Press Start 2P', Helvetica, sans-serif;
+  
+}
+input[type="text"],
+select,
+select option {
+  font-family: 'Press Start 2P', Helvetica, sans-serif;
+  color: #828282;
+}
+
+
+input[type="text"]::placeholder {
+  color: #828282;
+  opacity: 1;
+}
+
+
+select option:not([value=""]) {
+  color: #828282;
+}
+
+
+
+
+input[type="text"] {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  flex: 1;
+  max-width: 400px;
+  font-size: 0.8em;
+  outline: none;
+  transition: border 0.3s;
+  font-family: 'Press Start 2P', Helvetica, sans-serif;
+}
+
+input[type="text"]:focus {
+  border-color: #DE0A0A;
+}
+
+select {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 0.8em;
+  cursor: pointer;
+  outline: none;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.pokemon-card {
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card img {
+  width: 100%;
+  height: auto;
+  max-width: 120px;
+  margin-bottom: 10px;
+}
+
+.pokemon-card h2 {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.pokemon-card p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.types-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.type {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.7em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.agua { background: #2D599A; }
+.fuego { background: #DE0A0A; }
+.planta { background: #397553; }
+.siniestro { background: #343434; }
+.tierra { background: #DE7B0A; }
+.normal { background: #A9A9A9; }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input[type="text"], select {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .pokemon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  
+  nav ul {
+    gap: 10px;
+  }
+  
+  .pokemon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
