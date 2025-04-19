@@ -1,0 +1,189 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #CEEFE0; /* Nuevo color de fondo */
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor principal centrado */
+.berry-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Estilo de la ficha de bayas */
+.berry-detail {
+    background: white;
+    border: 4px solid #000;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Botón de retroceso */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #DE0A0A;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 100;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+/* Header de la ficha */
+.berry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 3px dashed #000;
+    padding-bottom: 15px;
+}
+
+.berry-name {
+    font-size: 1.8em;
+}
+
+.poke {
+    color: #DE0A0A;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.quest {
+    color: #8E8E8E;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.berry-number {
+    font-size: 1.2em;
+    color: #828282;
+}
+
+/* Contenido principal */
+.berry-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.berry-image {
+    text-align: center;
+}
+
+.berry-image img {
+    width: 100%;
+    max-width: 200px;
+    image-rendering: pixelated;
+}
+
+/* Información de la baya */
+.berry-info h3 {
+    margin: 15px 0 10px;
+    font-size: 1.2em;
+    color: #DE0A0A;
+}
+
+.berry-description p {
+    font-size: 0.8em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.berry-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+/* Tipo de baya */
+.type {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.fuego {
+    background: #DE0A0A;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .berry-content {
+        grid-template-columns: 1fr;
+    }
+
+    .berry-image img {
+        max-width: 150px;
+    }
+
+    .berry-name {
+        font-size: 1.4em;
+    }
+
+    .berry-number {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .berry-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .berry-name {
+        font-size: 1.2em;
+    }
+    
+    .back-button {
+        top: 10px;
+        left: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+
+    .berry-description p {
+        font-size: 0.7em;
+    }
+}
