@@ -1,8 +1,8 @@
 import {Routes} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MockComponent } from './components/mock/mock.component';
-import { BerryHomeComponent } from './berry.home/berry.home.component';
-import { AbilitiesHomeComponent } from './abilities.home/abilities.home.component';
+import { BerryHomeComponent } from './components/berry.home/berry.home.component';
+import { AbilitiesHomeComponent } from './components/abilities.home/abilities.home.component';
 
 const routeConfig: Routes = [
     {
