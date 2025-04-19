@@ -1,7 +1,8 @@
 import {Routes} from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { BerryHomeComponent } from './berry.home/berry.home.component';
-import { AbilitiesHomeComponent } from './abilities.home/abilities.home.component';
+import { HomeComponent } from './components/home/home.component';
+import { MockComponent } from './components/mock/mock.component';
+import { BerryHomeComponent } from './components/berry.home/berry.home.component';
+import { AbilitiesHomeComponent } from './components/abilities.home/abilities.home.component';
 
 const routeConfig: Routes = [
     {
@@ -20,6 +21,11 @@ const routeConfig: Routes = [
       component: AbilitiesHomeComponent,
       title: 'homeAbilities',
 
+    },
+    {
+      path: 'mock',
+      component: MockComponent,
+      title: 'mock',
     },
   ];
   export default routeConfig;
