@@ -4,6 +4,7 @@ import { MockComponent } from './components/mock/mock.component';
 import { BerryHomeComponent } from './components/berry.home/berry.home.component';
 import { AbilitiesHomeComponent } from './components/abilities.home/abilities.home.component';
 import { BerryComponent } from './components/berry/berry.component';
+import { AbilityComponent } from './components/ability/ability.component';
 
 const routeConfig: Routes = [
     {
@@ -32,6 +33,11 @@ const routeConfig: Routes = [
       path: 'Berry',
       component: BerryComponent,
       title: 'Berry',
+    },
+    {
+      path: 'Ability',
+      component: AbilityComponent,
+      title: 'Ability',
     },
   ];
   export default routeConfig;

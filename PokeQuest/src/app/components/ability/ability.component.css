@@ -1,0 +1,156 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #EAE3FF;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor principal centrado */
+.ability-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Estilo de la ficha de habilidad */
+.ability-detail {
+    background: white;
+    border: 4px solid #000;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
+    text-align: center;
+}
+
+/* Botón de retroceso */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #DE0A0A;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 100;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+/* Header de la ficha */
+.ability-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 3px dashed #000;
+    padding-bottom: 15px;
+}
+
+.ability-name {
+    font-size: 1.8em;
+}
+
+.poke {
+    color: #DE0A0A;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.quest {
+    color: #8E8E8E;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.ability-number {
+    font-size: 1.2em;
+    color: #828282;
+}
+
+/* Información de la habilidad */
+.ability-info h3 {
+    margin: 20px 0 10px;
+    font-size: 1.2em;
+    color: #DE0A0A;
+}
+
+.ability-description p {
+    font-size: 0.8em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* Lista de Pokémon */
+.pokemon-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.pokemon-item {
+    background: #F0F0F0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid #000;
+    font-size: 0.7em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ability-title {
+        font-size: 1.5em;
+    }
+    
+    .ability-number {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .ability-title {
+        font-size: 1.3em;
+    }
+    
+    .back-button {
+        top: 10px;
+        left: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+
+    .ability-description p {
+        font-size: 0.7em;
+    }
+}
