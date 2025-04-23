@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-berry.home',
@@ -8,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class BerryHomeComponent {
 
+  constructor(private route: ActivatedRoute){
+    
+  }
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe()
+  }
 }

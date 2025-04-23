@@ -29,7 +29,7 @@ const routeConfig: Routes = [
       title: 'mock',
     },
     {
-      path: 'pokemon',
+      path: 'pokemon/:nombre',
       component: PokemonComponent,
       title: 'pokemon',
     },

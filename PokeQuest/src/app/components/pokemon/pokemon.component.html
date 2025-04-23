@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POKEQUEST - Piplup</title>
     <link rel="stylesheet" href="pokemon.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -17,27 +19,30 @@
         <div class="pokemon-detail">
             <div class="pokemon-header">
                 <h1 class="pokemon-name"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
-                <span class="pokemon-number">No. 393</span>
+                <span class="pokemon-number">No. {{ pokemon.id }}</span>
             </div>
 
             <div class="pokemon-content">
                 <div class="pokemon-image">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/393.png" alt="Piplup">
-                    <span class="type agua">Agua</span>
+                    <img [src]="pokemon.sprites.front_default" alt="pokemon.name">
+                    <span *ngFor="let type of pokemon.types" 
+                        class="type {{ type.type.name }}">
+                        {{ type.type.name | titlecase }}
+                    </span>
                 </div>
 
                 <div class="pokemon-info">
                     <h3>Movimientos</h3>
                     <ul>
-                        <li>• Placaje</li>
-                        <li>• Burbuja</li>
-                        <li>• Golpe Bajo</li>
-                        <li>• Hidropulso</li>
+                        <li *ngFor="let move of pokemon.moves | slice:0:4">
+                            • {{ move.move.name | titlecase }}
+                        </li>
                     </ul>
 
                     <h3>Habilidades</h3>
                     <ul>
-                        <li>• Torrente (Aumenta ataques agua al debilitarse)</li>
+                        <li *ngFor = "let habiliad of pokemon.abilities | slice:0:1">
+                            • {{habiliad.ability.name}}</li>
                     </ul>
 
                     <h3>Evoluciones</h3>
@@ -48,10 +53,10 @@
 
                     <div class="pokemon-stats">
                         <div>
-                            <strong>Peso:</strong> 5.2kg
+                            <strong>Peso:</strong> {{pokemon.weight}}kg
                         </div>
                         <div>
-                            <strong>Altura:</strong> 0.4m
+                            <strong>Altura:</strong> 0.{{pokemon.height}}m
                         </div>
                     </div>
                 </div>
