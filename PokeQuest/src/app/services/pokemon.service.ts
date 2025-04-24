@@ -5,6 +5,7 @@ import { IPokemon } from '../interfaces/pokemon.interface';
 import { map, startWith } from 'rxjs/operators'
 import { IBerry } from '../interfaces/berry.interface';
 import { IAbilitiy } from '../interfaces/ability.interface';
+import { IHomePokemon } from '../interfaces/pokemon.home.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +36,7 @@ export class PokemonService {
         return this.httpClient.get(url);
     }
 
-    getFilteredPokemonNames(term: string): Observable<string[]> {
-        return this.httpClient.get(`${this.jhonElJhonApiUrl}/pokemon/getFilteredPokemonNames/${term}`).pipe(map(res => <string[]>res));
+    getPokemonsByFilter(term: string, type: string): Observable<IHomePokemon[]> {
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/pokemon/getPokemonsByFilter/${term}/${type}`).pipe(map(res => <IHomePokemon[]>res));
     }
 }
