@@ -25,30 +25,30 @@
             <div class="pokemon-content">
                 <div class="pokemon-image">
                     <img [src]="pokemon.sprites.front_default" alt="pokemon.name">
-                    <span *ngFor="let type of pokemon.types" 
-                        class="type {{ type.type.name }}">
-                        {{ type.type.name | titlecase }}
+                    <span *ngFor="let tipo of cadenaTipos" 
+                        class="type {{ tipo }}">
+                        {{ tipo | titlecase }}
                     </span>
                 </div>
 
                 <div class="pokemon-info">
                     <h3>Movimientos</h3>
                     <ul>
-                        <li *ngFor="let move of pokemon.moves | slice:0:4">
-                            • {{ move.move.name | titlecase }}
+                        <li *ngFor="let movimiento of cadenaMovimientos | slice:0:4">
+                            • {{ movimiento | titlecase }}
                         </li>
                     </ul>
 
                     <h3>Habilidades</h3>
                     <ul>
-                        <li *ngFor = "let habiliad of pokemon.abilities | slice:0:1">
-                            • {{habiliad.ability.name}}</li>
+                        <li *ngFor = "let habiliad of cadenaHabilidades | slice:0:4">
+                            • {{habiliad}}</li>
                     </ul>
 
-                    <h3>Evoluciones</h3>
+                    <h3>Cadena Evolutiva</h3>
                     <ul>
-                        <li>• Prinplup</li>
-                        <li>• Empoleon</li>
+                        <li *ngFor = "let evolucion of cadenaEvoluciones">
+                            • {{evolucion}}</li>
                     </ul>
 
                     <div class="pokemon-stats">

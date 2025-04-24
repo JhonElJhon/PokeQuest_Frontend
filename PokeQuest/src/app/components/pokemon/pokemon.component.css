@@ -146,9 +146,26 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-.agua {
+.Agua {
     background: #2D599A;
 }
+.Fuego { background: #DE0A0A; }
+.Planta { background: #397553; }
+.Siniestro { background: #343434; }
+.Tierra { background: #DE7B0A; }
+.Normal { background: #A9A9A9; }
+.Bicho { background: #397553;}
+.Volador { background: #A9A9A9;}
+.Lucha { background: #DE7B0A;}
+.Veneno {background: purple;}
+.Roca { background: #555;}
+.Fantasma {background: #A9A9A9;}
+.Acero  {background: #A7C7E7;}
+.Eléctrico { background: yellow;}
+.Psíquico { background: #2D599A;}
+.Hielo {background: #2D599A;}
+.Dragón {background: #DE0A0A;}
+.Hada {background: pink;}
 
 /* Responsive */
 @media (max-width: 768px) {
