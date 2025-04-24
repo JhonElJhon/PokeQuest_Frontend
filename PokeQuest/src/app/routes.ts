@@ -33,6 +33,8 @@ const routeConfig: Routes = [
       path: 'pokemon/:nombre',
       component: PokemonComponent,
       title: 'pokemon',
+    },
+    {
       path: 'Berry',
       component: BerryComponent,
       title: 'Berry',

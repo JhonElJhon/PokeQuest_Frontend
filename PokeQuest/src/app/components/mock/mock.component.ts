@@ -162,7 +162,7 @@ export class MockComponent {
                     let tipo = this.berry.natural_gift_type.url;
                     tipo = tipo.substring(31,33);
                     tipo = tipo.replace("/","");
-                    this.mock += "(" + this.berry.id + ", '" + nombre + "', " + tipo +"), \n"
+                    this.mock += "(" + this.berry.id + ", '" + nombre + "', " + tipo +", 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + this.berry.name + "-berry.png'), \n"
                 },
                 error => {
                     console.log(error);
