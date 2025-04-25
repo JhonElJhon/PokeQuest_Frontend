@@ -10,63 +10,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
-    <nav>
-        <ul>
-            <li><a href="#">Trivia</a></li>
-            <li><a href="#">Pokemon</a></li>
-            <li><a href="#">Habilidades</a></li>
-        </ul>
-    </nav>
-</header>
-    <main>
-        <div class="search-container">
-            <input type="text" placeholder="Buscar Baya...">
-            <select>
-                <option value="">Tipo...</option>
-                <option value="agua">Agua</option>
-                <option value="fuego">Fuego</option>
-                <option value="planta">Planta</option>
-                <option value="siniestro">Siniestro</option>
-                <option value="tierra">Tierra</option>
-                <option value="normal">Normal</option>
-            </select>
-        </div>
-        <div class="pokemon-grid">
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cheri-berry.png" alt="Cheri">
-                <h2>N°001</h2>
-                <p>Cheri</p>
-                <span class="type fuego">Fuego</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/chesto-berry.png" alt="Chesto">
-                <h2>N°002</h2>
-                <p>Chesto</p>
-                <span class="type agua">Agua</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/pecha-berry.png" alt="Pecha">
-                <h2>N°003</h2>
-                <p>Pecha</p>
-                <span class="type electrico">Electrico</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rawst-berry.png" alt="Greninja">
-                <h2>N°004</h2>
-                <p>Rawst</p>
+    <header>
+      <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+      <nav>
+          <ul>
+              <li><a href=""(click)="IrATrivia($event)" role="button" tabindex="0">Trivia</a></li>
+              <li><a href=""(click)="IrAHome($event)" role="button" tabindex="0">Pokemon</a></li>
+              <li><a href=""(click)="IrAHabilidades($event)" role="button" tabindex="0">Habilidades</a></li>
+          </ul>
+      </nav>
+  </header>
+      <main>
+          <div class="search-container">
+              <input type="text" placeholder="Buscar Baya..." [(ngModel)]="busqueda" (input)="BuscarFrutas(busqueda, tipo)">
+              <select [(ngModel)]="tipo" (ngModelChange)="BuscarFrutas(busqueda, tipo)">
+                  <option value="">Tipo...</option>
+                  <option value="normal">Normal</option>
+                  <option value="lucha">Lucha</option>
+                  <option value="volador">Volador</option>
+                  <option value="veneno">Veneno</option>
+                  <option value="tierra">Tierra</option>
+                  <option value="roca">Roca</option>
+                  <option value="bicho">Bicho</option>
+                  <option value="fantasma">Fantasma</option>
+                  <option value="acero">Acero</option>
+                  <option value="fuego">Fuego</option>
+                  <option value="agua">Agua</option>
+                  <option value="planta">Planta</option>
+                  <option value="eléctrico">Eléctrico</option>
+                  <option value="psíquico">Psíquico</option>
+                  <option value="hielo">Hielo</option>
+                  <option value="dragón">Dragón</option>
+                  <option value="siniestro">Siniestro</option>
+                  <option value="hada">Hada</option>
+              </select>
+          </div>
+          <div class="pokemon-grid">
+              <div class="pokemon-card" *ngFor="let fruta of frutasFiltradas" (click)="FrutaDetalles(fruta.nombre)" role="button" tabindex="0">
+                <img [src]="fruta.spriteURL" [alt]="fruta.nombre">
+                <h2>N°{{ fruta.id }}</h2>
+                <p>{{ fruta.nombre }}</p>
+                
+                <!-- Handle single or multiple types -->
                 <div class="types-container">
-                    <span class="type planta">Planta</span>
+                    <span class="type {{ fruta.tipo }}">
+                        {{ fruta.tipo | titlecase }}
+                      </span>
                 </div>
+                
+              </div>
             </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/aspear-berry.png" alt="Cubone">
-                <h2>N°005</h2>
-                <p>Aspear</p>
-                <span class="type hielo">Hielo</span>
-            </div>
-        </div>
-    </main>
-</body>
+      </main>
+  </body>
 </html>

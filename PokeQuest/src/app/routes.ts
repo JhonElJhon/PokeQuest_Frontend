@@ -29,7 +29,7 @@ const routeConfig: Routes = [
       title: 'mock',
     },
     {
-      path: 'Berry',
+      path: 'berry/:nombre',
       component: BerryComponent,
       title: 'Berry',
     },
