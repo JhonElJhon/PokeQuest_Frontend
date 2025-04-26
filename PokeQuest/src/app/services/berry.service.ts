@@ -18,7 +18,6 @@ export class BerryService {
         private httpClient: HttpClient
     ) { }
 
-    //Cambiar para el berry.service
     searchBerryByName(name: string): Observable<IBerry> {
         return this.httpClient.get(`${this.pokeApiUrl}/berry/${name.toLocaleLowerCase().replace(/\s/g, "-")}`).pipe(map(res => <IBerry>res));
     }
