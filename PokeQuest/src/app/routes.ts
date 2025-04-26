@@ -35,7 +35,7 @@ const routeConfig: Routes = [
       title: 'pokemon',
     },
     {
-      path: 'Berry',
+      path: 'berry/:nombre',
       component: BerryComponent,
       title: 'Berry',
     },
