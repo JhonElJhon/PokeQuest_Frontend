@@ -18,13 +18,9 @@ import { ActivatedRoute } from '@angular/router';
 export class BerryHomeComponent {
   constructor(
     private BerryService: BerryService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ){}
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
-
-  constructor(private route: ActivatedRoute){
-    
-  }
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   ngOnDestroy(): void {
