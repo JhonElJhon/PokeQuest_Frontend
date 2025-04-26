@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { BerryService } from '../../services/berry.service';
 import { IHomeBerry } from '../../interfaces/berry.home.interface';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-berry.home',
@@ -17,6 +20,11 @@ export class BerryHomeComponent {
     private BerryService: BerryService,
     private router: Router
   ){}
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
+  constructor(private route: ActivatedRoute){
+    
+  }
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   ngOnDestroy(): void {
@@ -72,5 +80,6 @@ export class BerryHomeComponent {
   public IrAHabilidades(event: Event){
     event.preventDefault()
     this.router.navigate(['/homeAbilities']);
+
   }
 }

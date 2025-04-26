@@ -159,7 +159,10 @@ export class MockComponent {
                     //console.log(this.pokemon.name);
                     let nombre = this.berry.name[0].toUpperCase();
                     nombre = this.berry.name.replace(this.berry.name[0], nombre)
-                    this.mock += "(" + this.berry.id + ", '" + nombre + "'), \n"
+                    let tipo = this.berry.natural_gift_type.url;
+                    tipo = tipo.substring(31,33);
+                    tipo = tipo.replace("/","");
+                    this.mock += "(" + this.berry.id + ", '" + nombre + "', " + tipo +", 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + this.berry.name + "-berry.png'), \n"
                 },
                 error => {
                     console.log(error);
@@ -172,7 +175,7 @@ export class MockComponent {
   Habilidades(){
     console.log("inicia")
     //console.log("Funciona " + this.temp)
-    for(let i = 1; i<65; i++){
+    for(let i = 1; i<308; i++){
       this.PokemonService.searchAbilityByName(i.toString())
       .pipe(takeUntil(this.ngUnsubscribe))
             .subscribe(
