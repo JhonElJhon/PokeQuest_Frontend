@@ -28,8 +28,8 @@ export class BerryComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const pokemonName = params['nombre'];
-      this.CargarDetalles(pokemonName);
+      const berryName = params['nombre'];
+      this.CargarDetalles(berryName);
     });
   }
 

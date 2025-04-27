@@ -32,7 +32,7 @@
                     </div>
 
                     <h3>Pokémon con esta habilidad</h3>
-                    <div class="pokemon-list" *ngFor="let pokemon of listaPokemones">
+                    <div class="pokemon-list" *ngFor="let pokemon of listaPokemones | slice:0:4">
                         <p>{{pokemon}}</p>
                     </div>
                 </div>
