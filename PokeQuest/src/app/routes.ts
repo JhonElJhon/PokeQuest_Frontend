@@ -5,6 +5,7 @@ import { BerryHomeComponent } from './components/berry.home/berry.home.component
 import { AbilitiesHomeComponent } from './components/abilities.home/abilities.home.component';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { BerryComponent } from './components/berry/berry.component';
+import { AbilityComponent } from './components/ability/ability.component';
 
 const routeConfig: Routes = [
     {
@@ -37,6 +38,16 @@ const routeConfig: Routes = [
     {
       path: 'berry/:nombre',
       component: BerryComponent,
+      title: 'Berry',
+    },
+    {
+      path: 'Ability',
+      component: AbilityComponent,
+      title: 'Ability',
+    },
+    {
+      path: 'ability/:nombre',
+      component: AbilityComponent,
       title: 'Berry',
     },
   ];
