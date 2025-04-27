@@ -20,10 +20,10 @@
             
         </ul>
     </nav>
-</header>
+    </header>
     <main>
         <div class="search-container">
-            <input type="text" placeholder="Buscar Habilidad...">
+            <input type="text" placeholder="Buscar Habilidad..." [(ngModel)]="busqueda" (input)="BuscarHabilidades(busqueda)">
         </div>
         <div class="pokemon-grid">
             <div class="pokemon-card" *ngFor="let habilidad of habilidadesFiltradas" (click)="HabilidadDetalles(habilidad.nombreEN)" role="button" tabindex="0">

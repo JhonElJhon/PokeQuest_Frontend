@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <a href="index.html" class="back-button">
+    <a href="index.html" class="back-button" (click)="IrAHabilidades($event)" role="button">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -17,31 +17,23 @@
         <div class="ability-detail">
             <div class="ability-header">
                 <h1 class="ability-name"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
-                <span class="ability-number">No. 001</span>
+                <span class="ability-number">No. {{this.ability.id}}</span>
             </div>
 
             <div class="ability-content">
                 <div class="ability-image">
-                    <span class="type veneno">Hedor</span>
+                    <span class="type veneno">{{this.nombre}}</span>
                 </div>
 
                 <div class="ability-info">
                     <h3>Descripción</h3>
                     <div class="ability-description">
-                        <p>Esta habilidad libera un hedor tan intenso al entrar en batalla que puede hacer retroceder al oponente. Los Pokémon con esta habilidad pueden hacer huir a Pokémon salvajes de menor nivel. El mal olor también reduce ligeramente la precisión del rival.</p>
+                        <p>{{this.descripcion}}</p>
                     </div>
 
                     <h3>Pokémon con esta habilidad</h3>
-                    <div class="pokemon-list">
-                        <div class="pokemon-item">
-                            <span>Bulbasaur</span>
-                        </div>
-                        <div class="pokemon-item">
-                            <span>Grimer</span>
-                        </div>
-                        <div class="pokemon-item">
-                            <span>Gulpin</span>
-                        </div>
+                    <div class="pokemon-list" *ngFor="let pokemon of listaPokemones">
+                        <p>{{pokemon}}</p>
                     </div>
                 </div>
             </div>
