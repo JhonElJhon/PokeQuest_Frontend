@@ -39,5 +39,10 @@ const routeConfig: Routes = [
       component: AbilityComponent,
       title: 'Ability',
     },
+    {
+      path: 'ability/:nombre',
+      component: AbilityComponent,
+      title: 'Berry',
+    },
   ];
   export default routeConfig;

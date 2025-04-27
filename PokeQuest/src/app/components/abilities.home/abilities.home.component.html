@@ -14,9 +14,9 @@
     <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
     <nav>
         <ul>
-            <li><a href="#">Trivia</a></li>
-            <li><a href="#">Pokemon</a></li>
-            <li><a href="#">Bayas</a></li>
+            <li><a href="#" (click)="IrATrivia($event)">Trivia</a></li>
+            <li><a href="#" (click)="IrAHome($event)">Pokemon</a></li>
+            <li><a href="#" (click)="IrABayas($event)">Bayas</a></li>
             
         </ul>
     </nav>
@@ -26,23 +26,9 @@
             <input type="text" placeholder="Buscar Habilidad...">
         </div>
         <div class="pokemon-grid">
-            <div class="pokemon-card">
-                <h2>N°001</h2>
-                <p>Hedor</p>
-                
-            </div>
-            <div class="pokemon-card">
-                <h2>N°002</h2>
-                <p>Llovizna</p>
-           
-            </div>
-            <div class="pokemon-card">
-                <h2>N°003</h2>
-                <p>Impulso</p>
-            </div>
-            <div class="pokemon-card">
-                <h2>N°004</h2>
-                <p>Armadura Batalla</p>
+            <div class="pokemon-card" *ngFor="let habilidad of habilidadesFiltradas" (click)="HabilidadDetalles(habilidad.nombreEN)" role="button" tabindex="0">
+                <h2>N°{{habilidad.id}}</h2>
+                <p>{{habilidad.nombreES}}</p>
             </div>
         </div>
     </main>
