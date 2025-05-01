@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Press Start 2P', cursive;
-    background-color: #CEEFE0; /* Nuevo color de fondo */
+    background-color: #D8E9FF;
     color: #333;
     line-height: 1.6;
     min-height: 100vh;
@@ -16,7 +16,7 @@ body {
 }
 
 /* Contenedor principal centrado */
-.berry-detail-container {
+.pokemon-detail-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +24,8 @@ body {
     padding: 20px;
 }
 
-/* Estilo de la ficha de bayas */
-.berry-detail {
+/* Estilo de la ficha Pokémon */
+.pokemon-detail {
     background: white;
     border: 4px solid #000;
     border-radius: 15px;
@@ -64,7 +64,7 @@ body {
 }
 
 /* Header de la ficha */
-.berry-header {
+.pokemon-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,7 +73,7 @@ body {
     padding-bottom: 15px;
 }
 
-.berry-name {
+.pokemon-name {
     font-size: 1.8em;
 }
 
@@ -89,42 +89,45 @@ body {
     text-stroke: 2px black;
 }
 
-.berry-number {
+.pokemon-number {
     font-size: 1.2em;
     color: #828282;
 }
 
 /* Contenido principal */
-.berry-content {
+.pokemon-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
 }
 
-.berry-image {
+.pokemon-image {
     text-align: center;
 }
 
-.berry-image img {
+.pokemon-image img {
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     image-rendering: pixelated;
 }
 
-/* Información de la baya */
-.berry-info h3 {
+/* Información del Pokémon */
+.pokemon-info h3 {
     margin: 15px 0 10px;
     font-size: 1.2em;
     color: #DE0A0A;
 }
 
-.berry-description p {
-    font-size: 0.8em;
-    line-height: 1.5;
-    margin-bottom: 15px;
+.pokemon-info ul {
+    list-style-type: none;
 }
 
-.berry-stats {
+.pokemon-info li {
+    margin-bottom: 8px;
+    font-size: 0.8em;
+}
+
+.pokemon-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -132,7 +135,7 @@ body {
     font-size: 0.9em;
 }
 
-/* Tipo de baya */
+/* Tipo de Pokémon */
 .type {
     display: inline-block;
     padding: 5px 15px;
@@ -166,29 +169,29 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .berry-content {
+    .pokemon-content {
         grid-template-columns: 1fr;
     }
 
-    .berry-image img {
-        max-width: 150px;
+    .pokemon-image img {
+        max-width: 180px;
     }
 
-    .berry-name {
+    .pokemon-name {
         font-size: 1.4em;
     }
 
-    .berry-number {
+    .pokemon-number {
         font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    .berry-stats {
+    .pokemon-stats {
         grid-template-columns: 1fr;
     }
 
-    .berry-name {
+    .pokemon-name {
         font-size: 1.2em;
     }
     
@@ -198,9 +201,5 @@ body {
         width: 35px;
         height: 35px;
         font-size: 1.2em;
-    }
-
-    .berry-description p {
-        font-size: 0.7em;
     }
 }

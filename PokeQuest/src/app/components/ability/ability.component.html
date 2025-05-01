@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEQUEST - Hedor</title>
+    <link rel="stylesheet" href="ability.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="index.html" class="back-button" (click)="IrAHabilidades($event)" role="button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <div class="ability-detail-container">
+        <div class="ability-detail">
+            <div class="ability-header">
+                <h1 class="ability-name"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+                <span class="ability-number">No. {{this.ability.id}}</span>
+            </div>
+
+            <div class="ability-content">
+                <div class="ability-image">
+                    <span class="type veneno">{{this.nombre}}</span>
+                </div>
+
+                <div class="ability-info">
+                    <h3>Descripción</h3>
+                    <div class="ability-description">
+                        <p>{{this.descripcion}}</p>
+                    </div>
+
+                    <h3>Pokémon con esta habilidad</h3>
+                    <div class="pokemon-list" *ngFor="let pokemon of listaPokemones | slice:0:4">
+                        <p>{{pokemon}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Press Start 2P', cursive;
-    background-color: #CEEFE0; /* Nuevo color de fondo */
+    background-color: #EAE3FF;
     color: #333;
     line-height: 1.6;
     min-height: 100vh;
@@ -16,7 +16,7 @@ body {
 }
 
 /* Contenedor principal centrado */
-.berry-detail-container {
+.ability-detail-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,17 +24,18 @@ body {
     padding: 20px;
 }
 
-/* Estilo de la ficha de bayas */
-.berry-detail {
+/* Estilo de la ficha de habilidad */
+.ability-detail {
     background: white;
     border: 4px solid #000;
     border-radius: 15px;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 25px;
     box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
     position: relative;
+    text-align: center;
 }
 
 /* Botón de retroceso */
@@ -64,7 +65,7 @@ body {
 }
 
 /* Header de la ficha */
-.berry-header {
+.ability-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,7 +74,7 @@ body {
     padding-bottom: 15px;
 }
 
-.berry-name {
+.ability-name {
     font-size: 1.8em;
 }
 
@@ -89,107 +90,56 @@ body {
     text-stroke: 2px black;
 }
 
-.berry-number {
+.ability-number {
     font-size: 1.2em;
     color: #828282;
 }
 
-/* Contenido principal */
-.berry-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
-}
-
-.berry-image {
-    text-align: center;
-}
-
-.berry-image img {
-    width: 100%;
-    max-width: 200px;
-    image-rendering: pixelated;
-}
-
-/* Información de la baya */
-.berry-info h3 {
-    margin: 15px 0 10px;
+/* Información de la habilidad */
+.ability-info h3 {
+    margin: 20px 0 10px;
     font-size: 1.2em;
     color: #DE0A0A;
 }
 
-.berry-description p {
+.ability-description p {
     font-size: 0.8em;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.berry-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-    font-size: 0.9em;
+/* Lista de Pokémon */
+.pokemon-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
 }
 
-/* Tipo de baya */
-.type {
-    display: inline-block;
-    padding: 5px 15px;
+.pokemon-item {
+    background: #F0F0F0;
+    padding: 8px 15px;
     border-radius: 20px;
-    color: white;
-    font-size: 0.9em;
-    margin-top: 10px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    border: 2px solid #000;
+    font-size: 0.7em;
 }
-
-.Agua {
-    background: #2D599A;
-}
-.Fuego { background: #DE0A0A; }
-.Planta { background: #397553; }
-.Siniestro { background: #343434; }
-.Tierra { background: #DE7B0A; }
-.Normal { background: #A9A9A9; }
-.Bicho { background: #397553;}
-.Volador { background: #A9A9A9;}
-.Lucha { background: #DE7B0A;}
-.Veneno {background: purple;}
-.Roca { background: #555;}
-.Fantasma {background: #A9A9A9;}
-.Acero  {background: #A7C7E7;}
-.Eléctrico { background: yellow;}
-.Psíquico { background: #2D599A;}
-.Hielo {background: #2D599A;}
-.Dragón {background: #DE0A0A;}
-.Hada {background: pink;}
 
 /* Responsive */
 @media (max-width: 768px) {
-    .berry-content {
-        grid-template-columns: 1fr;
+    .ability-title {
+        font-size: 1.5em;
     }
-
-    .berry-image img {
-        max-width: 150px;
-    }
-
-    .berry-name {
-        font-size: 1.4em;
-    }
-
-    .berry-number {
+    
+    .ability-number {
         font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    .berry-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .berry-name {
-        font-size: 1.2em;
+    .ability-title {
+        font-size: 1.3em;
     }
     
     .back-button {
@@ -200,7 +150,7 @@ body {
         font-size: 1.2em;
     }
 
-    .berry-description p {
+    .ability-description p {
         font-size: 0.7em;
     }
 }

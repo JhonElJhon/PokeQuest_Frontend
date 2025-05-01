@@ -14,68 +14,58 @@
     <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
     <nav>
         <ul>
-            <li><a href="#">Trivia</a></li>
-            <li><a href="#">Bayas</a></li>
-            <li><a href="#">Habilidades</a></li>
             <li><a href="#">Iniciar sesión</a></li>
-
+            <li><a href=""(click)="IrATrivia($event)" role="button" tabindex="0">Trivia</a></li>
+            <li><a href=""(click)="IrABayas($event)" role="button" tabindex="0">Bayas</a></li>
+            <li><a href=""(click)="IrAHabilidades($event)" role="button" tabindex="0">Habilidades</a></li>
         </ul>
     </nav>
 </header>
     <main>
         <div class="search-container">
-            <input type="text" placeholder="Buscar pokémon...">
-            <select>
+            <input type="text" placeholder="Buscar pokémon..." [(ngModel)]="busqueda" (input)="BuscarPokemones(busqueda, tipo)">
+            <select [(ngModel)]="tipo" (ngModelChange)="BuscarPokemones(busqueda, tipo)">
                 <option value="">Tipo...</option>
-                <option value="agua">Agua</option>
-                <option value="fuego">Fuego</option>
-                <option value="planta">Planta</option>
-                <option value="siniestro">Siniestro</option>
-                <option value="tierra">Tierra</option>
                 <option value="normal">Normal</option>
+                <option value="lucha">Lucha</option>
+                <option value="volador">Volador</option>
+                <option value="veneno">Veneno</option>
+                <option value="tierra">Tierra</option>
+                <option value="roca">Roca</option>
+                <option value="bicho">Bicho</option>
+                <option value="fantasma">Fantasma</option>
+                <option value="acero">Acero</option>
+                <option value="fuego">Fuego</option>
+                <option value="agua">Agua</option>
+                <option value="planta">Planta</option>
+                <option value="eléctrico">Eléctrico</option>
+                <option value="psíquico">Psíquico</option>
+                <option value="hielo">Hielo</option>
+                <option value="dragón">Dragón</option>
+                <option value="siniestro">Siniestro</option>
+                <option value="hada">Hada</option>
             </select>
         </div>
         <div class="pokemon-grid">
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-4.png" alt="Piplup">
-                <h2>N°393</h2>
-                <p>Piplup</p>
-                <span class="type agua">Agua</span>
+            <div class="pokemon-card" *ngFor="let pokemon of pokemonesFiltrados" (click)="PokemonDetalles(pokemon.nombre)" role="button" tabindex="0">
+              <img [src]="pokemon.spriteURL" [alt]="pokemon.nombre">
+              <h2>N°{{ pokemon.id }}</h2>
+              <p>{{ pokemon.nombre }}</p>
+              
+              <!-- Handle single or multiple types -->
+              <div class="types-container" *ngIf="pokemon.tipos.length > 1; else singleType">
+                <span *ngFor="let tipo of pokemon.tipos" class="type {{ tipo.toLowerCase() }}">
+                  {{ tipo | titlecase }}
+                </span>
+              </div>
+              
+              <ng-template #singleType>
+                <span class="type {{ pokemon.tipos[0].toLowerCase() }}">
+                  {{ pokemon.tipos[0] | titlecase }}
+                </span>
+              </ng-template>
             </div>
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-5.png" alt="Charizard">
-                <h2>N°006</h2>
-                <p>Charizard</p>
-                <span class="type fuego">Fuego</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-6.png" alt="Bulbasaur">
-                <h2>N°001</h2>
-                <p>Bulbasaur</p>
-                <span class="type planta">Planta</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-10.png" alt="Greninja">
-                <h2>N°0658</h2>
-                <p>Greninja</p>
-                <div class="types-container">
-                    <span class="type agua">Agua</span>
-                    <span class="type siniestro">Siniestro</span>
-                </div>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-11.png" alt="Cubone">
-                <h2>N°104</h2>
-                <p>Cubone</p>
-                <span class="type tierra">Tierra</span>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://c.animaapp.com/m97xtqzmd1VgsO/img/image-12.png" alt="Snorlax">
-                <h2>N°143</h2>
-                <p>Snorlax</p>
-                <span class="type normal">Normal</span>
-            </div>
-        </div>
+          </div>
     </main>
 </body>
 </html>

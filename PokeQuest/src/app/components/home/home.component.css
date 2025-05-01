@@ -187,6 +187,18 @@
   .siniestro { background: #343434; }
   .tierra { background: #DE7B0A; }
   .normal { background: #A9A9A9; }
+  .bicho { background: #397553;}
+  .volador { background: #A9A9A9;}
+  .lucha { background: #DE7B0A;}
+  .veneno {background: purple;}
+  .roca { background: #555;}
+  .fantasma {background: #A9A9A9;}
+  .acero  {background: #A7C7E7;}
+  .eléctrico { background: yellow;}
+  .psíquico { background: #2D599A;}
+  .hielo {background: #2D599A;}
+  .dragón {background: #DE0A0A;}
+  .hada {background: pink;}
   
   @media (max-width: 768px) {
     header {
