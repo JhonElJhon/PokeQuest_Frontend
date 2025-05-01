@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEQUEST - Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="perfil.component.css">
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Modal de Avatar (oculto por defecto) -->
+    <div class="avatar-modal">
+        <div class="modal-content">
+            <h2>Elige tu Avatar</h2>
+            <div class="avatar-options">
+                <div class="avatar-option">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu">
+                    <p>Pikachu</p>
+                </div>
+                <div class="avatar-option">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur">
+                    <p>Bulbasaur</p>
+                </div>
+                <div class="avatar-option">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
+                    <p>Squirtle</p>
+                </div>
+                <div class="avatar-option">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="Gengar">
+                    <p>Gengar</p>
+                </div>
+                <div class="avatar-option">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="Mewtwo">
+                    <p>Mewtwo</p>
+                </div>
+            </div>
+            <button class="modal-close">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+            <p class="subtitle">Perfil de Entrenador</p>
+        </div>
+
+        <div class="profile-card">
+            <!-- Sección Avatar -->
+            <div class="avatar-section">
+                <h2>Tu Avatar</h2>
+                <div class="current-avatar" id="avatar-trigger">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar actual">
+                    <span class="edit-icon"><i class="fas fa-camera"></i></span>
+                </div>
+            </div>
+
+            <!-- Información del perfil -->
+            <div class="profile-info">
+                <div class="section-header">
+                    <h2>Datos del Entrenador</h2>
+                    <button class="edit-button" id="edit-button">
+                        
+                        <span class="button-text">Editar</span>
+                    </button>
+                </div>
+                
+                <form class="profile-form">
+                    <div class="info-item">
+                        <span class="info-label">Nombre:</span>
+                        <span class="info-value">Gabs10</span>
+                        <input type="text" class="edit-input" value="AshKetchum">
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Correo:</span>
+                        <span class="info-value">ggspokequest.com</span>
+                        <input type="email" class="edit-input" value="ash@pokequest.com">
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Miembro desde:</span>
+                        <span class="info-value">10/05/2023</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Puntaje total:</span>
+                        <span class="info-value">1,250 pts</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Trivias completadas:</span>
+                        <span class="info-value">8</span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancelar</button>
+                        <button type="submit" class="save-button">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
