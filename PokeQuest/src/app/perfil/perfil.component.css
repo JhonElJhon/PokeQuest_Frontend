@@ -440,5 +440,9 @@ body {
         margin-top: 8px;
     }
 }
+.edit-button {
+    min-width: 44px; /* Tamaño mínimo accesible */
+    min-height: 44px;
+}
     
     }
