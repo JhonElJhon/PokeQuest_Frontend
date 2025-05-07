@@ -7,9 +7,11 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { BerryComponent } from './components/berry/berry.component';
 import { UserComponent } from './components/user/user.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PerfilComponent } from './perfil/perfil.component';
-
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { AbilityComponent } from './components/ability/ability.component';
+import { TriviasHomeComponent } from './components/trivias.home/trivias.home.component';
+import { StartTriviaComponent } from './components/start.trivia/start.trivia.component';
+import { MultiplayerHomeComponent } from './components/multiplayer.home/multiplayer.home.component';
 
 
 const routeConfig: Routes = [
@@ -71,6 +73,21 @@ const routeConfig: Routes = [
       path: 'ability/:nombre',
       component: AbilityComponent,
       title: 'Berry',
+    },
+    {
+      path: 'homeTrivias',
+      component: TriviasHomeComponent,
+      title: 'homeTrivias',
+    },
+    {
+      path: 'startTrivia',
+      component: StartTriviaComponent,
+      title: 'startTrivia',
+    },
+    {
+      path: 'HomeMultiplayer',
+      component: MultiplayerHomeComponent,
+      title: 'HomeMultiplayer',
     },
   ];
   export default routeConfig;

@@ -1,0 +1,308 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Botón de retroceso */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #DE0A0A;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 100;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+/* Contenedor Pokedex */
+.pokedex-container {
+    width: 100%;
+    max-width: 800px;
+    background: #d35400;
+    border: 8px solid #c0392b;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    padding: 20px;
+}
+
+/* Pantalla interior */
+.pokedex-screen {
+    background: #ecf0f1;
+    border: 6px solid #2c3e50;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+/* Encabezado */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.poke {
+    color: #DE0A0A;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.quest {
+    color: #8E8E8E;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+}
+
+.subtitle {
+    color: #2c3e50;
+    font-size: 0.8em;
+}
+
+/* Barra de búsqueda */
+.search-container {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    border: 3px solid #2c3e50;
+    border-radius: 8px;
+    font-size: 0.7em;
+}
+
+.search-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    cursor: pointer;
+    border-bottom: 3px solid #2980b9;
+    transition: all 0.2s;
+}
+
+.search-button:hover {
+    background: #2980b9;
+}
+
+/* Tabla de ranking */
+.ranking-section {
+    margin-bottom: 20px;
+}
+
+.ranking-section h2 {
+    color: #DE0A0A;
+    font-size: 1em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7em;
+}
+
+.players-table th, .players-table td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 2px solid #bdc3c7;
+}
+
+.players-table th {
+    background: #2c3e50;
+    color: white;
+}
+
+.players-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.players-table tr:hover {
+    background-color: #e6f3ff;
+    cursor: pointer;
+}
+
+.player-avatar {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+/* Detalles del jugador */
+.player-details {
+    display: none;
+    background: white;
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.details-header h3 {
+    color: #DE0A0A;
+    font-size: 0.9em;
+}
+
+.close-details {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #e74c3c;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.detail-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #2c3e50;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.player-name {
+    color: #2c3e50;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.player-stats {
+    width: 100%;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.player-stats p {
+    margin-bottom: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.profile-button, .challenge-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.7em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.profile-button {
+    background: #3498db;
+    color: white;
+    border-bottom: 3px solid #2980b9;
+}
+
+.profile-button:hover {
+    background: #2980b9;
+}
+
+.challenge-button {
+    background: #27ae60;
+    color: white;
+    border-bottom: 3px solid #1e8449;
+}
+
+.challenge-button:hover {
+    background: #2ecc71;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+    
+    .players-table {
+        font-size: 0.6em;
+    }
+    
+    .player-avatar {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pokedex-container {
+        padding: 15px;
+    }
+    
+    .pokedex-screen {
+        padding: 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .players-table th, .players-table td {
+        padding: 8px 5px;
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEQUEST - Trivia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="start.trivia.component.css">
+</head>
+<body>
+    <div class="pokedex-container">
+        <div class="pokedex-screen">
+            <!-- Header con temporizador -->
+            <div class="trivia-header">
+                <div class="trivia-info">
+                    <span class="trivia-type agua">Tipo: Agua</span>
+                    <span class="question-count">Pregunta 1/10</span>
+                </div>
+                <div class="timer-container">
+                    <i class="fas fa-clock"></i>
+                    <span class="timer">03:00</span>
+                </div>
+            </div>
+
+            <!-- Contenedor de pregunta -->
+            <div class="question-container">
+                <div class="pokemon-image">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
+                </div>
+                <h2 class="question-text">¿Qué nivel de evolución tiene Squirtle?</h2>
+            </div>
+
+            <!-- Opciones de respuesta -->
+            <div class="options-container">
+                <button class="option-button">Primera evolución</button>
+                <button class="option-button">Segunda evolución</button>
+                <button class="option-button">Tercera evolución</button>
+                <button class="option-button">No evoluciona</button>
+            </div>
+
+            <!-- Feedback y navegación -->
+            <div class="feedback-container">
+                <div class="feedback-message correct" style="display: none;">
+                    <i class="fas fa-check-circle"></i> ¡Correcto! +10 pts
+                </div>
+                <div class="feedback-message incorrect" style="display: none;">
+                    <i class="fas fa-times-circle"></i> Incorrecto. La respuesta era: Primera evolución
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="next-button disabled">
+                        <i class="fas fa-arrow-right"></i> Siguiente Pregunta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Barra de progreso -->
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 10%"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

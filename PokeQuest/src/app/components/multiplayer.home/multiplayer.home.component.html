@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEQUEST - Multijugador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="multiplayer.home.component.css">
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <div class="pokedex-container">
+        <div class="pokedex-screen">
+            <div class="header">
+                <h1><span class="poke">POKE</span><span class="quest">MULTI</span></h1>
+                <p class="subtitle">Modo Multijugador</p>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="search-container">
+                <input type="text" placeholder="Buscar entrenador..." class="search-input">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Ranking de jugadores -->
+            <div class="ranking-section">
+                <h2><i class="fas fa-trophy"></i> Top 10 Entrenadores</h2>
+                <div class="table-container">
+                    <table class="players-table">
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Entrenador</th>
+                                <th>Puntos</th>
+                                <th>Victorias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo con datos estáticos -->
+                            <tr class="player-row">
+                                <td>1</td>
+                                <td>
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar" class="player-avatar">
+                                    AshKetchum
+                                </td>
+                                <td>2,450</td>
+                                <td>48</td>
+                            </tr>
+                            <tr class="player-row">
+                                <td>2</td>
+                                <td>
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Avatar" class="player-avatar">
+                                    MistyWater
+                                </td>
+                                <td>2,100</td>
+                                <td>42</td>
+                            </tr>
+                            <!-- Más filas... -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detalles del jugador seleccionado (oculto inicialmente) -->
+            <div class="player-details" id="player-details">
+                <div class="details-header">
+                    <h3>Detalles del Entrenador</h3>
+                    <button class="close-details">&times;</button>
+                </div>
+                <div class="details-content">
+                    <div class="player-info">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar" class="detail-avatar">
+                        <h4 class="player-name">AshKetchum</h4>
+                        <div class="player-stats">
+                            <p><strong>Nivel:</strong> 25</p>
+                            <p><strong>Puntos:</strong> 2,450</p>
+                            <p><strong>Victorias:</strong> 48</p>
+                            <p><strong>Derrotas:</strong> 12</p>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="profile-button">
+                            <i class="fas fa-user"></i> Ver Perfil
+                        </button>
+                        <button class="challenge-button">
+                            <i class="fas fa-bolt"></i> Desafiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/multijugador.js" type="module"></script>
+</body>
+</html>
