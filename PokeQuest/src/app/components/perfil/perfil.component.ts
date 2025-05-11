@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 interface Avatar {
   id: string;
@@ -23,7 +25,11 @@ interface UserProfile {
   styleUrls: ['./perfil.component.css']  // <-- Corregido: styleUrl ➜ styleUrls
 })
 export class PerfilComponent implements OnInit {
-
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ){}
   // Avatares disponibles
   avatars: Avatar[] = [
     { id: 'pikachu', name: 'Pikachu', imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png' },
@@ -96,5 +102,10 @@ export class PerfilComponent implements OnInit {
   private isValidEmail(email: string): boolean {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
+  }
+
+  public IrATrivia(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/homeTrivias']);
   }
 }

@@ -23,17 +23,45 @@
             <div class="login-form">
                 <h2>Iniciar sesión</h2>
                 
-                <div class="input-group">
-                    <label for="username">Usuario</label>
-                    <input type="text" id="username" class="pokedex-input" placeholder="Ingresa tu usuario">
-                </div>
-                
-                <div class="input-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" class="pokedex-input" placeholder="••••••••">
-                </div>
-                
-                <button class="pokedex-button">Ingresar</button>
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="username" name="username" class="pokedex-input" 
+                            [(ngModel)]="credentials.username" required
+                            placeholder="Ingresa tu usuario"
+                            #username="ngModel">
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)" 
+                            class="error-message">
+                            <div *ngIf="username.errors?.['required']">
+                                Nombre de usuario es requerido
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" class="pokedex-input" 
+                            [(ngModel)]="credentials.password" required
+                            placeholder="••••••••"
+                            #password="ngModel">
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" 
+                            class="error-message">
+                            <div *ngIf="password.errors?.['required']">
+                                Contraseña es requerida
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="pokedex-button" 
+                            [disabled]="!loginForm.form.valid || loading">
+                        <span *ngIf="!loading">Ingresar</span>
+                        <span *ngIf="loading">Ingresando...</span>
+                    </button>
+
+                    <div *ngIf="errorMessage" class="error-message server-error">
+                        {{ errorMessage }}
+                    </div>
+                </form>
                 
                 <p class="register-link">¿No tienes cuenta aún? <a href=""(click)="IrARegister($event)" role="button" tabindex="0"class="register-btn">Crear una cuenta</a></p>
             </div>

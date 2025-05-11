@@ -16,4 +16,8 @@ export class TriviasHomeComponent {
     event.preventDefault()
     this.router.navigate(['']);
   }
+  public IrAPerfil(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/perfil']);
+  }
 }

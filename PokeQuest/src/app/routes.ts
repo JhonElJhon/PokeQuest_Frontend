@@ -12,6 +12,8 @@ import { AbilityComponent } from './components/ability/ability.component';
 import { TriviasHomeComponent } from './components/trivias.home/trivias.home.component';
 import { StartTriviaComponent } from './components/start.trivia/start.trivia.component';
 import { MultiplayerHomeComponent } from './components/multiplayer.home/multiplayer.home.component';
+import { AuthGuard } from './auth.guard';
+
 
 
 const routeConfig: Routes = [
@@ -58,9 +60,10 @@ const routeConfig: Routes = [
       title: 'register',
     },
     {
-      path: 'perfil',
+      path: 'perfil/:nombre',
       component: PerfilComponent,
       title: 'perfil',
+      canActivate: [AuthGuard],
     },
 
     {
@@ -78,16 +81,19 @@ const routeConfig: Routes = [
       path: 'homeTrivias',
       component: TriviasHomeComponent,
       title: 'homeTrivias',
+      canActivate: [AuthGuard],
     },
     {
       path: 'startTrivia',
       component: StartTriviaComponent,
       title: 'startTrivia',
+      canActivate: [AuthGuard],
     },
     {
       path: 'HomeMultiplayer',
       component: MultiplayerHomeComponent,
       title: 'HomeMultiplayer',
+      canActivate: [AuthGuard],
     },
   ];
   export default routeConfig;
