@@ -65,7 +65,7 @@ export class BerryHomeComponent {
 
   public IrATrivia(event: Event){
     event.preventDefault()
-    console.log("pendiente")
+    this.router.navigate(['/homeTrivias']);
   }
 
   public IrAHome(event: Event){
@@ -76,6 +76,10 @@ export class BerryHomeComponent {
   public IrAHabilidades(event: Event){
     event.preventDefault()
     this.router.navigate(['/homeAbilities']);
+  }
 
+  public IrAUser(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/user']);
   }
 }

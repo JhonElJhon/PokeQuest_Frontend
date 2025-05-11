@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trivias',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './trivias.home.component.css'
 })
 export class TriviasHomeComponent {
+  constructor(
+    private router: Router
+  ){}
 
+  public IrAHome(event: Event){
+    event.preventDefault()
+    this.router.navigate(['']);
+  }
 }

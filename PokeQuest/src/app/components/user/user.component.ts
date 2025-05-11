@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ){}
+  public IrARegister(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/register']);
+  }
 }

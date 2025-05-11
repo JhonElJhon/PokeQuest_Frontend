@@ -58,7 +58,7 @@ export class AbilitiesHomeComponent {
   }
   public IrATrivia(event: Event){
     event.preventDefault()
-    console.log("pendiente")
+    this.router.navigate(['/homeTrivias']);
   }
 
   public IrABayas(event: Event){
@@ -69,5 +69,10 @@ export class AbilitiesHomeComponent {
   public IrAHome(event: Event){
     event.preventDefault()
     this.router.navigate(['']);
+  }
+
+  public IrAUser(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/user']);
   }
 }
