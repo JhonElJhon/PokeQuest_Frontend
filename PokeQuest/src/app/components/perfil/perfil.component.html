@@ -14,32 +14,16 @@
     </a>
 
     <!-- Modal de Avatar (oculto por defecto) -->
-    <div class="avatar-modal">
+    <div *ngIf="showAvatarModal" class="avatar-modal">
         <div class="modal-content">
             <h2>Elige tu Avatar</h2>
             <div class="avatar-options">
-                <div class="avatar-option">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu">
-                    <p>Pikachu</p>
-                </div>
-                <div class="avatar-option">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur">
-                    <p>Bulbasaur</p>
-                </div>
-                <div class="avatar-option">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
-                    <p>Squirtle</p>
-                </div>
-                <div class="avatar-option">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="Gengar">
-                    <p>Gengar</p>
-                </div>
-                <div class="avatar-option">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="Mewtwo">
-                    <p>Mewtwo</p>
+                <div *ngFor="let avatar of avatars" class="avatar-option" (click)="selectAvatar(avatar.imageUrl)">
+                    <img [src]="avatar.imageUrl" [alt]="avatar.name">
+                    <p>{{avatar.name}}</p>
                 </div>
             </div>
-            <button class="modal-close">Cerrar</button>
+            <button class="modal-close" (click)="closeAvatarModal()">Cerrar</button>
         </div>
     </div>
 
@@ -51,10 +35,10 @@
 
         <div class="profile-card">
             <!-- Sección Avatar -->
-            <div class="avatar-section">
+            <div class="avatar-section" (click)="openAvatarModal()">
                 <h2>Tu Avatar</h2>
                 <div class="current-avatar" id="avatar-trigger">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar actual">
+                    <img [src]="userProfile.avatar" alt="Avatar actual">
                     <span class="edit-icon"><i class="fas fa-camera"></i></span>
                 </div>
             </div>
@@ -65,41 +49,41 @@
                     <h2>Datos del Entrenador</h2>
                     <button class="edit-button" id="edit-button">
                         
-                        <span class="button-text">Editar</span>
+                        <span class="button-text" (click)="startEditing()">Editar</span>
                     </button>
                 </div>
                 
                 <form class="profile-form">
                     <div class="info-item">
                         <span class="info-label">Nombre:</span>
-                        <span class="info-value">AshKetchum</span>
-                        <input type="text" class="edit-input" value="AshKetchum">
+                        <span class="info-value">{{userProfile.nombre}}</span>
+                        <input *ngIf="isEditing" type="text" class="edit-input" value="AshKetchum" [(ngModel)]="editedUsername" [ngModelOptions]="{standalone: true}">
                     </div>
                     
                     <div class="info-item">
                         <span class="info-label">Correo:</span>
-                        <span class="info-value">ashpokequest.com</span>
-                        <input type="email" class="edit-input" value="ash@pokequest.com">
+                        <span class="info-value">{{userProfile.email}}</span>
+                        <input *ngIf="isEditing" type="email" class="edit-input" value="ash@pokequest.com" [(ngModel)]="editedEmail" [ngModelOptions]="{standalone: true}">
                     </div>
                     
                     <div class="info-item">
                         <span class="info-label">Miembro desde:</span>
-                        <span class="info-value">10/05/2023</span>
+                        <span class="info-value">{{userProfile.fechaInicio}}</span>
                     </div>
                     
                     <div class="info-item">
                         <span class="info-label">Puntaje total:</span>
-                        <span class="info-value">1250</span>
+                        <span class="info-value">{{userProfile.puntaje}}</span>
                     </div>
                     
                     <div class="info-item">
                         <span class="info-label">Trivias completadas:</span>
-                        <span class="info-value">8</span>
+                        <span class="info-value">{{userProfile.trivias}}</span>
                     </div>
 
-                    <div class="form-actions">
-                        <button type="button" class="cancel-button">Cancelar</button>
-                        <button type="submit" class="save-button">Guardar</button>
+                    <div *ngIf="isEditing" class="form-actions">
+                        <button type="button" class="cancel-button" (click)="cancelEdit()">Cancelar</button>
+                        <button type="submit" class="save-button" (click)="saveProfile()">Guardar</button>
                     </div>
                 </form>
             </div>

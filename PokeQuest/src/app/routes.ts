@@ -78,7 +78,7 @@ const routeConfig: Routes = [
       title: 'Berry',
     },
     {
-      path: 'homeTrivias',
+      path: 'homeTrivias/:nombre',
       component: TriviasHomeComponent,
       title: 'homeTrivias',
       canActivate: [AuthGuard],

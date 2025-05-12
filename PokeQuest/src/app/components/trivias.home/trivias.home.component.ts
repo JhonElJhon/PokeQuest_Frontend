@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-trivias',
@@ -9,8 +9,16 @@ import { Router } from '@angular/router';
 })
 export class TriviasHomeComponent {
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ){}
+public userName = '';
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+          const UserName = params['nombre'];
+          this.userName = UserName;
+        });
+  }
 
   public IrAHome(event: Event){
     event.preventDefault()
@@ -18,6 +26,6 @@ export class TriviasHomeComponent {
   }
   public IrAPerfil(event: Event){
     event.preventDefault()
-    this.router.navigate(['/perfil']);
+    this.router.navigate(['/perfil', this.userName]);
   }
 }

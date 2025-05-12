@@ -164,7 +164,6 @@ body {
 
 /* Modal de avatar */
 .avatar-modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -264,7 +263,6 @@ body {
 }
 
 .edit-input {
-    display: none;
     width: 100%;
     max-width: 200px;
     padding: 8px;
@@ -274,7 +272,6 @@ body {
 }
 
 .form-actions {
-    display: none;
     justify-content: flex-end;
     gap: 15px;
     margin-top: 25px;
