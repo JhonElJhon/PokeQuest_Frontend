@@ -84,7 +84,7 @@ const routeConfig: Routes = [
       canActivate: [AuthGuard],
     },
     {
-      path: 'startTrivia',
+      path: 'startTrivia/:nombre',
       component: StartTriviaComponent,
       title: 'startTrivia',
       canActivate: [AuthGuard],

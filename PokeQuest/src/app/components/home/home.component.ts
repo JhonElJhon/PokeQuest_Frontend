@@ -62,7 +62,8 @@ constructor(
 
   public IrATrivia(event: Event){
     event.preventDefault()
-    this.router.navigate(['/homeTrivias']);
+    if(localStorage.getItem('username') == null) this.router.navigate(['/user'])
+    this.router.navigate(['/homeTrivias', localStorage.getItem('username')]);
   }
 
   public IrABayas(event: Event){

@@ -26,6 +26,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
         localStorage.setItem('jwt_token', response.token);
+        localStorage.setItem('username', credentials.username)
         this.loggedIn.next(true);
       })
     );
@@ -33,12 +34,17 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwt_token');
+    localStorage.removeItem('username');
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
 
   getToken(): string | null {
     return localStorage.getItem('jwt_token');
+  }
+
+  getUsername(): string | null{
+    return localStorage.getItem('username');
   }
 
   private checkToken(): void {
