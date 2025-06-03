@@ -14,7 +14,7 @@
             <div class="header">
                 <h1><span class="poke">POKE</span><span class="quest">TRIVIAS</span></h1>
                 <nav class="main-nav">
-                    <a href="multijugador.html" class="nav-button">Multijugador</a>
+                    <a href="" (click)="IrAMultijugador($event)" role="button" tabindex="0" class="nav-button">Multijugador</a>
                     <a href="" (click)="IrAPerfil($event)" role="button" tabindex="0"class="nav-button">Perfil</a>
                     <a href="" (click)="IrAHome($event)" role="button" tabindex="0" class="nav-button">Home</a>
                 </nav>
@@ -23,41 +23,49 @@
             <div class="welcome-message">
                 <h2>¡Bienvenido a PokéTrivias!</h2>
                 <p>Demuestra tus conocimientos y atrápalos a todos con tus respuestas.</p>
+                <p>Busca por tipo de Pokémon o busca tu Pokémon favorito!</p>
                 <p class="highlight">¡Que comience la aventura!</p>
             </div>
 
             <div class="trivia-options">
-                <div class="option-card type-selection">
+                <div class="search-section">
+                    <h3><i class="fas fa-search"></i> Buscar Pokémon específico</h3>
+                    <div class="search-input" #searchContainer>
+                        <input type="text" placeholder="Ej: Pikachu" [(ngModel)]="busqueda" (focus)="showSuggestions = true"
+                   (input)="filterPokemon()">
+                   <!-- Suggestion Box -->
+                    <div class="suggestion-box" *ngIf="showSuggestions && filteredPokemonList.length > 0">
+                        <button *ngFor="let pokemon of filteredPokemonList" 
+                                class="suggestion-item"
+                                (click)="selectPokemon(pokemon)">
+                            {{ pokemon }}
+                        </button>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="option-card type-selection" *ngIf="!busqueda">
                     <h3><i class="fas fa-dragon"></i> Tipo de Pokémon</h3>
-                    <div class="type-buttons">
-                        <button class="type-button all-types">Todos</button>
-                        <button class="type-button agua">Agua</button>
-                        <button class="type-button fuego">Fuego</button>
-                        <button class="type-button planta">Planta</button>
-                        <button class="type-button electrico">Eléctrico</button>
-                        <button class="type-button psiquico">Psíquico</button>
+                    <div class="type-buttons" *ngFor="let tipo of listaTipos" (click)="SeleccionTipo(tipo)">
+                        <button
+                         [class]="tipo.toLowerCase()" 
+                         [class.selected]="tipo === tipoSeleccionado">
+                         {{tipo}}</button>
                     </div>
                 </div>
 
                 <div class="option-card time-selection">
                     <h3><i class="fas fa-list-ol"></i> Cantidad de preguntas</h3>
-                    <div class="time-buttons">
-                        <button class="time-button">3 </button>
-                        <button class="time-button">5 </button>
-                        <button class="time-button">10 </button>
+                    <div class="time-buttons" >
+                        <button [class]="timebutton"
+                                [class.selected]="num === numSeleccionado"
+                                *ngFor="let num of listaNums" (click)="SeleccionNum(num)">{{num}}
+                             </button>
                     </div>
                 </div>
             </div>
 
-            <div class="search-section">
-                <h3><i class="fas fa-search"></i> Buscar Pokémon específico</h3>
-                <div class="search-input">
-                    <input type="text" placeholder="Ej: Pikachu">
-                    <button class="search-button">Buscar</button>
-                </div>
-            </div>
-
-            <button class="start-button">
+            <button class="start-button" (click)="ComenzarTrivia()">
                 <i class="fas fa-play"></i> ¡Comenzar Trivia!
             </button>
         </div>
