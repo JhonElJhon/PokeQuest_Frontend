@@ -73,7 +73,6 @@ export class PerfilComponent implements OnInit {
       .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(
             res => {
-              console.log(res)
               this.userProfile = res;
               for(let i = 0; i<this.avatars.length; i++){
                 if(this.avatars[i].id == this.userProfile.avatar){

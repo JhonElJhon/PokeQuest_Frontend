@@ -14,8 +14,7 @@
             <!-- Header con temporizador -->
             <div class="trivia-header">
                 <div class="trivia-info">
-                    <span class="trivia-type agua">Tipo: Agua</span>
-                    <span class="question-count">Pregunta 1/10</span>
+                    <span class="question-count">Pregunta {{indiceActual}}/{{cantPreguntas}}</span>
                 </div>
                 <div class="timer-container">
                     <i class="fas fa-clock"></i>
@@ -25,31 +24,26 @@
 
             <!-- Contenedor de pregunta -->
             <div class="question-container">
+                <h2 class="question-text">{{pokemonActual}}</h2>
                 <div class="pokemon-image">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
+                    <img [src]="spriteActual" [alt]=pokemonActual>
                 </div>
-                <h2 class="question-text">¿Qué nivel de evolución tiene Squirtle?</h2>
+                <h2 class="question-text">{{preguntaActual}}</h2>
             </div>
 
             <!-- Opciones de respuesta -->
             <div class="options-container">
-                <button class="option-button">Primera evolución</button>
-                <button class="option-button">Segunda evolución</button>
-                <button class="option-button">Tercera evolución</button>
-                <button class="option-button">No evoluciona</button>
+                <button class="option-button" *ngFor="let respuesta of respuestasActuales" (click)="ElegirRespuesta(respuesta)">{{respuesta}}</button>
             </div>
 
             <!-- Feedback y navegación -->
             <div class="feedback-container">
-                <div class="feedback-message correct" style="display: none;">
-                    <i class="fas fa-check-circle"></i> ¡Correcto! +10 pts
-                </div>
-                <div class="feedback-message incorrect" style="display: none;">
-                    <i class="fas fa-times-circle"></i> Incorrecto. La respuesta era: Primera evolución
+                <div class="feedback-message" *ngIf="mostrar">
+                    <i class="fas fa-check-circle"></i> {{feedback}}
                 </div>
                 
                 <div class="navigation-buttons">
-                    <button class="next-button disabled">
+                    <button class="next-button" (click)="Evaluar()">
                         <i class="fas fa-arrow-right"></i> Siguiente Pregunta
                     </button>
                 </div>

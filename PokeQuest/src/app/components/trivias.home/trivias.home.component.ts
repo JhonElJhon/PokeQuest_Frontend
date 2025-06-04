@@ -46,11 +46,11 @@ export class TriviasHomeComponent {
   public filteredPokemonList: string[] = [];
 
   public pokemon: IHomePokemon = {
-      id: 0,
-      nombre: "",
-      tipos: [],
-      spriteURL: ""
-    }
+    id: 0,
+    nombre: "",
+    tipos: [],
+    spriteURL: ""
+  }
   public pokemonesFiltrados: IHomePokemon[] = [];
 
  @ViewChild('searchContainer') searchContainer!: ElementRef;
@@ -112,11 +112,9 @@ export class TriviasHomeComponent {
   }
 
   public ComenzarTrivia(){
-    localStorage.removeItem("cantPreguntas");
-    localStorage.removeItem("pokemon");
-    localStorage.removeItem("tipo");
     localStorage.setItem("cantPreguntas", this.numSeleccionado.toString());
     localStorage.setItem("tipo", this.tipoSeleccionado);
+    this.busqueda = this.busqueda == "" ? "%20" : this.busqueda;
     localStorage.setItem("pokemon", this.busqueda);
     this.IrATrivia();
   }

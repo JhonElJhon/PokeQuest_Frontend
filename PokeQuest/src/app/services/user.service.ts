@@ -19,7 +19,7 @@ export class UserService {
     ) { }
 
     searchUserByName(name: string): Observable<IUserProfile> {
-        return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/get/${name.toLocaleLowerCase().replace(/\s/g, "-")}`).pipe(map(res => <IUserProfile>res));
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/get/${name.replace(/\s/g, "-")}`).pipe(map(res => <IUserProfile>res));
     }
 
     updateUserData(userData: { avatar: number; nombreViejo: string; emailViejo: string; nombreNuevo: string; emailNuevo: string;}): Observable<any> {
