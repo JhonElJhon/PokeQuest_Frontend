@@ -30,6 +30,9 @@ export class TriviasHomeComponent {
           const UserName = params['nombre'];
           this.userName = UserName;
         });
+    localStorage.setItem("cantPreguntas", "");
+    localStorage.setItem("tipo", "");
+    localStorage.setItem("pokemon", "");
     this.ObtenerTodosPokemones();
   }
 

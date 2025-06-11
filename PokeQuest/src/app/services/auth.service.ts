@@ -7,7 +7,8 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:5001/user';
+  //private apiUrl = 'https://localhost:5001/user';
+  private apiUrl: string = 'https://pokequestapi.onrender.com/user';
   private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {

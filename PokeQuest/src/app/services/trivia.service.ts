@@ -15,7 +15,8 @@ import { ITrivia } from '../interfaces/trivia.interface';
     providedIn: 'root'
 })
 export class TriviaService {
-    private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient

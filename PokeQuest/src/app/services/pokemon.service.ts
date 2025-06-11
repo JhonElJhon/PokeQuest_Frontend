@@ -15,7 +15,8 @@ import { ISpecie } from '../interfaces/specie.interface';
 })
 export class PokemonService {
     private pokeApiUrl: string = 'https://pokeapi.co/api/v2';
-    private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient

@@ -18,7 +18,7 @@
                 </div>
                 <div class="timer-container">
                     <i class="fas fa-clock"></i>
-                    <span class="timer">03:00</span>
+                    <span class="timer"> {{minutes | number:'2.0-0'}}:{{seconds | number:'2.0-0'}}</span>
                 </div>
             </div>
 
@@ -32,26 +32,35 @@
             </div>
 
             <!-- Opciones de respuesta -->
-            <div class="options-container">
-                <button class="option-button" *ngFor="let respuesta of respuestasActuales" (click)="ElegirRespuesta(respuesta)">{{respuesta}}</button>
-            </div>
+            <div *ngIf="hayJuego">
+                <div class="options-container">
+                    <button [class]="optionButton"
+                            [class.selected]="respuesta === respuestaElegida"
+                    *ngFor="let respuesta of respuestasActuales" (click)="ElegirRespuesta(respuesta)">{{respuesta}}</button>
+                </div>
 
-            <!-- Feedback y navegación -->
-            <div class="feedback-container">
-                <div class="feedback-message" *ngIf="mostrar">
-                    <i class="fas fa-check-circle"></i> {{feedback}}
+                <!-- Feedback y navegación -->
+                <div class="feedback-container">
+                    <div class="feedback-message" *ngIf="mostrar">
+                        <i class="fas fa-check-circle"></i> {{feedback}}
+                    </div>
+                    
+                    <div class="navigation-buttons" *ngIf="hayRespuesta">
+                        <button class="next-button" (click)="Evaluar()">
+                            <i class="fas fa-arrow-right"></i> {{texto}}
+                        </button>
+                    </div>
                 </div>
-                
-                <div class="navigation-buttons">
-                    <button class="next-button" (click)="Evaluar()">
-                        <i class="fas fa-arrow-right"></i> Siguiente Pregunta
-                    </button>
-                </div>
+            </div>
+            <div *ngIf="!hayJuego" class="feedback-message">
+                Preguntas Correctas: {{cantCorrectas}}/{{cantPreguntas}}<br>
+                Puntaje Final: {{puntaje}}<br>
+                Por favor, espere a ser redirigido.
             </div>
 
             <!-- Barra de progreso -->
             <div class="progress-container">
-                <div class="progress-bar" style="width: 10%"></div>
+                <div class="progress-bar" [style.width.%]="progressValue"></div>
             </div>
         </div>
     </div>

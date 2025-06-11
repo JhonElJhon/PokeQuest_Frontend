@@ -107,7 +107,7 @@ body {
     margin-bottom: 25px;
 }
 
-.option-button {
+.optionButton {
     background: white;
     border: 3px solid #2c3e50;
     border-radius: 8px;
@@ -118,7 +118,7 @@ body {
     text-align: left;
 }
 
-.option-button:hover {
+.optionButton:hover {
     background: #d6eaf8;
     transform: translateY(-2px);
 }
@@ -192,6 +192,12 @@ body {
     height: 100%;
     background: #27ae60;
     transition: width 0.3s;
+}
+
+.selected {
+  border: 3px solid green !important; /* Force override existing styles */
+  box-sizing: border-box; /* Prevent size changes */
+  transform: translateY(-2px);
 }
 
 /* Responsive */

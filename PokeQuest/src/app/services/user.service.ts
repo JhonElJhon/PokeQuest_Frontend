@@ -12,11 +12,16 @@ import { IUserProfile } from '../interfaces/userProfile.interface';
     providedIn: 'root'
 })
 export class UserService {
-    private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient
     ) { }
+
+    getAllUsers(): Observable<IUserProfile[]>{
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/getAllUsers`).pipe(map(res => <IUserProfile[]>res));
+    }
 
     searchUserByName(name: string): Observable<IUserProfile> {
         return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/get/${name.replace(/\s/g, "-")}`).pipe(map(res => <IUserProfile>res));
@@ -28,6 +33,10 @@ export class UserService {
 
     getResourceByUrl(url: string): Observable<any> {
         return this.httpClient.get(url);
+    }
+
+    updateUserPoints(userData: { usuario: string; puntos: number;}): Observable<any> {
+        return this.httpClient.put(`${this.jhonElJhonApiUrl}/user/addPoints`, userData);
     }
 
 }
