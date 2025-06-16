@@ -7,4 +7,6 @@ export interface IUserProfile {
   puntaje: number;
   trivias: number;
   avatar: string;
+  victorias: number;
+  derrotas: number;
 }

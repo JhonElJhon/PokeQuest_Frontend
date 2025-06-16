@@ -19,8 +19,8 @@ export class UserService {
         private httpClient: HttpClient
     ) { }
 
-    getAllUsers(): Observable<IUserProfile[]>{
-        return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/getAllUsers`).pipe(map(res => <IUserProfile[]>res));
+    getAllUsersExcept(except: string): Observable<IUserProfile[]>{
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/user/getAllUsersExcept/${except.replace(/\s/g, "-")}`).pipe(map(res => <IUserProfile[]>res));
     }
 
     searchUserByName(name: string): Observable<IUserProfile> {
@@ -35,7 +35,7 @@ export class UserService {
         return this.httpClient.get(url);
     }
 
-    updateUserPoints(userData: { usuario: string; puntos: number;}): Observable<any> {
+    updateUserPoints(userData: { usuario: string; puntos: number; victorias: number; derrotas: number}): Observable<any> {
         return this.httpClient.put(`${this.jhonElJhonApiUrl}/user/addPoints`, userData);
     }
 

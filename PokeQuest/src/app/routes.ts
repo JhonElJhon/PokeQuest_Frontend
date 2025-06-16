@@ -13,6 +13,7 @@ import { TriviasHomeComponent } from './components/trivias.home/trivias.home.com
 import { StartTriviaComponent } from './components/start.trivia/start.trivia.component';
 import { MultiplayerHomeComponent } from './components/multiplayer.home/multiplayer.home.component';
 import { AuthGuard } from './auth.guard';
+import { DesafiosComponent } from './components/desafios/desafios.component';
 
 
 
@@ -60,22 +61,20 @@ const routeConfig: Routes = [
       title: 'register',
     },
     {
-      path: 'perfil/:nombre',
-      component: PerfilComponent,
-      title: 'perfil',
-      canActivate: [AuthGuard],
-    },
-
-    {
       path: 'Ability',
       component: AbilityComponent,
       title: 'Ability',
     },
-
     {
       path: 'ability/:nombre',
       component: AbilityComponent,
       title: 'Berry',
+    },
+    {
+      path: 'perfil/:nombre',
+      component: PerfilComponent,
+      title: 'perfil',
+      canActivate: [AuthGuard],
     },
     {
       path: 'homeTrivias/:nombre',
@@ -87,12 +86,18 @@ const routeConfig: Routes = [
       path: 'startTrivia/:nombre',
       component: StartTriviaComponent,
       title: 'startTrivia',
-       canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
     },
     {
       path: 'HomeMultiplayer/:nombre',
       component: MultiplayerHomeComponent,
       title: 'HomeMultiplayer',
+      canActivate: [AuthGuard],
+    },
+    {
+      path: 'Desafios/:nombre',
+      component: DesafiosComponent,
+      title: 'Desafios',
       canActivate: [AuthGuard],
     },
   ];

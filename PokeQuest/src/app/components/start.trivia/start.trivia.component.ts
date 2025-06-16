@@ -6,6 +6,7 @@ import { TriviaService } from '../../services/trivia.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { QuestService } from '../../services/quest.service';
 
 @Component({
   selector: 'app-start.trivia',
@@ -18,7 +19,8 @@ export class StartTriviaComponent {
     private router: Router,
     private route: ActivatedRoute,
     private triviaService: TriviaService,
-    private UserService: UserService
+    private UserService: UserService,
+    private QuestService: QuestService
   ){}
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
@@ -34,6 +36,7 @@ export class StartTriviaComponent {
   public pokemon: string | null = '';
   public tipo: string | null = '';
   public cantPreguntas: string | null = '';
+  public desafiado: string | null = '';
   public texto = "Siguiente Pregunta";
   public optionButton = 'optionButton';
   // 3-minute timer variables
@@ -58,17 +61,20 @@ export class StartTriviaComponent {
     this.pokemon = localStorage.getItem("pokemon");
     this.tipo = localStorage.getItem("tipo");
     this.cantPreguntas = localStorage.getItem("cantPreguntas");
+    this.desafiado = localStorage.getItem("desafiado");
     this.ObtenerTrivias();
     this.startCountdown();
   }
 
   public trivia: ITrivia = {
+      codigo: 0,
       pokemon: "",
       pregunta: "",
       respuestas: [],
       respuestaCorrecta: "",
       spriteURL: ""  
     }
+  public listaCodigos = "";
   public listaTrivias: ITrivia[] = [];
   public indiceActual = 0;
   public preguntaActual = '';
@@ -83,7 +89,9 @@ export class StartTriviaComponent {
   public feedback = '';
   public hayJuego = true;
   public puntaje = 0;
+  public puntosASuperar = 0;
   public cantCorrectas = 0;
+  public puedeResponder = false;
 
   // 3-minute countdown timer
   startCountdown() {
@@ -167,6 +175,8 @@ export class StartTriviaComponent {
             },
             error => {
                 console.log(error);
+                localStorage.setItem("error", "true");
+                this.router.navigate(['/homeTrivias', this.userName]);
                 /*this.listaTrivias = [
                                       {
                                         "pokemon": "Dratini",
@@ -211,10 +221,14 @@ export class StartTriviaComponent {
     );
   }
   ElegirRespuesta(respuesta: string){
-    this.respuestaElegida = respuesta;
-    this.hayRespuesta = true;
+    if(this.puedeResponder){
+      this.respuestaElegida = respuesta;
+      this.hayRespuesta = true;
+    }
+    
   }
   SiguientePregunta(){
+    this.puedeResponder = true;
     this.mostrar = false;
     if(this.indiceActual == this.listaTrivias.length){
       this.handleCountdownEnd();
@@ -226,10 +240,14 @@ export class StartTriviaComponent {
     this.spriteActual = this.listaTrivias[this.indiceActual].spriteURL;
     this.pokemonActual = this.listaTrivias[this.indiceActual].pokemon;
     this.respuestaCorrectaActual = this.listaTrivias[this.indiceActual].respuestaCorrecta;
+    this.listaCodigos += this.listaTrivias[this.indiceActual].codigo + "-";
     this.indiceActual++;
     this.texto = this.indiceActual == this.listaTrivias.length ? "Finalizar" : this.texto; 
   }
   Evaluar(){
+    if(this.indiceActual == this.listaTrivias.length){
+      this.stopCountdown();
+    }
     this.startProgressTimer(false, 3000);
     if(this.respuestaCorrectaActual == this.respuestaElegida){
       this.esCorrecto = true;
@@ -240,6 +258,7 @@ export class StartTriviaComponent {
       this.esCorrecto = false;
       this.feedback = 'Incorrecto. La respuesta era: ' + this.respuestaCorrectaActual;
     }
+    this.puedeResponder = false;
     this.hayRespuesta = false;
     this.mostrar = true;
     // Stop por 3 segundos
@@ -247,14 +266,18 @@ export class StartTriviaComponent {
 
   FinalizarTrivias(){
     this.hayJuego = false;
+    this.puntosASuperar = this.puntaje + this.minutes * 60 + this.seconds;
     this.preguntaActual = "Fin de la Trivia. Tus resultados:"
     this.startProgressTimer(true, 8000);
     // Logica de puntos
     let userData = {
         usuario: this.userName,
-        puntos: this.puntaje
+        puntos: this.puntaje,
+        victorias: 0,
+        derrotas: 0
       }
-    this.UserService.updateUserPoints(userData)
+    if(!this.desafiado){
+      this.UserService.updateUserPoints(userData)
       .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(
             res => {
@@ -264,5 +287,27 @@ export class StartTriviaComponent {
                 console.log(error);
             }
         );
+    }
+    else{
+      this.listaCodigos = this.listaCodigos.slice(0,this.listaCodigos.length - 1);
+      localStorage.setItem("desafiado", "");
+      console.log("codigos: " + this.listaCodigos);
+      let questData = {
+        retador: this.userName,
+        desafiado: this.desafiado,
+        puntajeASuperar: this.puntosASuperar,
+        trivias: this.listaCodigos,
+      }
+      this.QuestService.createQuest(questData)
+      .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe(
+            res => {
+              console.log(res)
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
   }
 }

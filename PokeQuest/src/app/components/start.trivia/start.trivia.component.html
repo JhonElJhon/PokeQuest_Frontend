@@ -45,16 +45,22 @@
                         <i class="fas fa-check-circle"></i> {{feedback}}
                     </div>
                     
-                    <div class="navigation-buttons" *ngIf="hayRespuesta">
+                    <div class="navigation-buttons" *ngIf="hayRespuesta && puedeResponder">
                         <button class="next-button" (click)="Evaluar()">
                             <i class="fas fa-arrow-right"></i> {{texto}}
                         </button>
                     </div>
                 </div>
             </div>
-            <div *ngIf="!hayJuego" class="feedback-message">
+            <div *ngIf="!hayJuego && !desafiado" class="feedback-message">
                 Preguntas Correctas: {{cantCorrectas}}/{{cantPreguntas}}<br>
                 Puntaje Final: {{puntaje}}<br>
+                Por favor, espere a ser redirigido.
+            </div>
+
+            <div *ngIf="!hayJuego && desafiado" class="feedback-message">
+                Preguntas Correctas: {{cantCorrectas}}/{{cantPreguntas}}<br>
+                Puntaje Desafío: {{puntosASuperar}}<br>
                 Por favor, espere a ser redirigido.
             </div>
 

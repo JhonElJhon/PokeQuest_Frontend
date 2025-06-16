@@ -81,6 +81,16 @@
                         <span class="info-value">{{userProfile.trivias}}</span>
                     </div>
 
+                    <div class="info-item">
+                        <span class="info-label">Victorias:</span>
+                        <span class="info-value">{{userProfile.victorias}}</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">Derrotas:</span>
+                        <span class="info-value">{{userProfile.derrotas}}</span>
+                    </div>
+
                     <div *ngIf="isEditing" class="form-actions">
                         <button type="button" class="cancel-button" (click)="cancelEdit()">Cancelar</button>
                         <button type="submit" class="save-button" (click)="saveProfile()">Guardar</button>

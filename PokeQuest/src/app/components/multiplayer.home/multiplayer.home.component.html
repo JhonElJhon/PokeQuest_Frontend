@@ -22,15 +22,12 @@
             </div>
 
             <!-- Barra de búsqueda -->
-            <div class="search-container">
-                <input type="text" placeholder="Buscar entrenador..." class="search-input">
-                <button class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
+            <div class="search-container" #searchContainer>
+                <input type="text" placeholder="Buscar entrenador..." class="search-input"[(ngModel)]="busqueda" (focus)="showSuggestions = true"  (input)="filterPlayers()">
             </div>
 
             <!-- Ranking de jugadores -->
-            <div class="ranking-section">
+            <div class="ranking-section" *ngIf="!busqueda">
                 <h2><i class="fas fa-trophy"></i> Top 10 Entrenadores</h2>
                 <div class="table-container">
                     <table class="players-table">
@@ -40,61 +37,63 @@
                                 <th>Entrenador</th>
                                 <th>Puntos</th>
                                 <th>Victorias</th>
+                                <th>Derrotas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Ejemplo con datos estáticos -->
-                            <tr class="player-row">
-                                <td>1</td>
+                            <tr class="player-row" *ngFor="let player of topPlayers">
+                                <td>{{topPlayers.indexOf(player) + 1}}</td>
                                 <td>
-                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar" class="player-avatar">
-                                    AshKetchum
+                                    <img [src]="player.avatar" [alt]="player.nombre" class="player-avatar">
+                                    {{player.nombre}}
                                 </td>
-                                <td>2,450</td>
-                                <td>48</td>
+                                <td>{{player.puntaje}}</td>
+                                <td>{{player.victorias}}</td>
+                                <td>{{player.derrotas}}</td>
+                                <button class="challenge-button" (click)="DesafiarA(player.nombre)" *ngIf="player.nombre != userName">
+                                    <i class="fas fa-bolt"></i> Desafiar
+                                </button>
                             </tr>
-                            <tr class="player-row">
-                                <td>2</td>
-                                <td>
-                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Avatar" class="player-avatar">
-                                    MistyWater
-                                </td>
-                                <td>2,100</td>
-                                <td>42</td>
-                            </tr>
-                            <!-- Más filas... -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Detalles del jugador seleccionado (oculto inicialmente) -->
-            <div class="player-details" id="player-details">
-                <div class="details-header">
-                    <h3>Detalles del Entrenador</h3>
-                    <button class="close-details">&times;</button>
-                </div>
-                <div class="details-content">
-                    <div class="player-info">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Avatar" class="detail-avatar">
-                        <h4 class="player-name">AshKetchum</h4>
-                        <div class="player-stats">
-                            <p><strong>Nivel:</strong> 25</p>
-                            <p><strong>Puntos:</strong> 2,450</p>
-                            <p><strong>Victorias:</strong> 48</p>
-                            <p><strong>Derrotas:</strong> 12</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="profile-button">
-                            <i class="fas fa-user"></i> Ver Perfil
-                        </button>
-                        <button class="challenge-button">
-                            <i class="fas fa-bolt"></i> Desafiar
-                        </button>
-                    </div>
+            <!-- Buscando todos los jugadores -->
+            <div class="ranking-section" *ngIf="busqueda">
+                <h2><i class="fas fa-trophy"></i> Top 10 coincidencias </h2>
+                <div class="table-container">
+                    <table class="players-table">
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Entrenador</th>
+                                <th>Puntos</th>
+                                <th>Victorias</th>
+                                <th>Derrotas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo con datos estáticos -->
+                            <tr class="player-row" *ngFor="let player of filteredPlayerList">
+                                <td>{{topPlayers.indexOf(player) + 1}}</td>
+                                <td>
+                                    <img [src]="player.avatar" [alt]="player.nombre" class="player-avatar">
+                                    {{player.nombre}}
+                                </td>
+                                <td>{{player.puntaje}}</td>
+                                <td>{{player.victorias}}</td>
+                                <td>{{player.derrotas}}</td>
+                                <button class="challenge-button" (click)="DesafiarA(player.nombre)" *ngIf="player.nombre != userName">
+                                    <i class="fas fa-bolt"></i> Desafiar
+                                </button>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
     </div>
 

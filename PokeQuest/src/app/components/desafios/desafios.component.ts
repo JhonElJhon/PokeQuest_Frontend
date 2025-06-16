@@ -1,19 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { PokemonService } from '../../services/pokemon.service';
 import { IHomePokemon } from '../../interfaces/pokemon.home.interface';
 import { AuthService } from '../../services/auth.service';
+import { PokemonService } from '../../services/pokemon.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-trivias',
+  selector: 'app-desafios',
   imports: [FormsModule, CommonModule],
-  templateUrl: './trivias.home.component.html',
-  styleUrl: './trivias.home.component.css'
+  templateUrl: './desafios.component.html',
+  styleUrl: './desafios.component.css'
 })
-export class TriviasHomeComponent {
+export class DesafiosComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class TriviasHomeComponent {
     this.ngUnsubscribe.complete();
   }
   public userName = '';
-  public desafiado: string | null = "";
+  public desafiado: string | null = '';
   ngOnInit(): void {
     this.route.params.subscribe(params => {
           const UserName = params['nombre'];
@@ -36,12 +36,9 @@ export class TriviasHomeComponent {
     localStorage.setItem("cantPreguntas", "");
     localStorage.setItem("tipo", "");
     localStorage.setItem("pokemon", "");
-    this.desafiado = localStorage.getItem("desafiado")
-    if(localStorage.getItem("error")){
-      alert("No existen trivias de este tipo o pokemón")
-    }
-    localStorage.removeItem("error");
+    this.desafiado = localStorage.getItem("desafiado");
     this.ObtenerTodosPokemones();
+    this.busqueda = this.desafiado;
   }
 
   public listaTipos = ['Todos', 'Agua', 'Fuego', 'Planta', 'Eléctrico', 'Psíquico', 'Siniestro', 'Tierra', 
@@ -51,7 +48,7 @@ export class TriviasHomeComponent {
   public tipoSeleccionado = 'Todos';
   public numSeleccionado = 3;
   public timebutton = 'time-button';
-  public busqueda = '';
+  public busqueda: string | null = '';
   public showSuggestions = false;
   public pokemonList: string[] = []; // Populate this with all Pokemon names
   public filteredPokemonList: string[] = [];
@@ -121,15 +118,6 @@ export class TriviasHomeComponent {
   public BuscarPokemones(busqueda: string){
     console.log(this.busqueda);
   }
-
-  public ComenzarTrivia(){
-    localStorage.setItem("cantPreguntas", this.numSeleccionado.toString());
-    localStorage.setItem("tipo", this.tipoSeleccionado);
-    this.busqueda = this.busqueda == "" ? "%20" : this.busqueda;
-    localStorage.setItem("pokemon", this.busqueda);
-    this.IrATrivia();
-  }
-
   public IrAHome(event: Event){
     event.preventDefault()
     this.router.navigate(['']);
@@ -137,6 +125,9 @@ export class TriviasHomeComponent {
   public IrAPerfil(event: Event){
     event.preventDefault()
     this.router.navigate(['/perfil', this.userName]);
+  }
+  public ComenzarTrivia(){
+    
   }
   public IrATrivia(){
     this.router.navigate(['startTrivia', this.userName]);
@@ -149,11 +140,5 @@ export class TriviasHomeComponent {
   public LogOut(event: Event){
     event.preventDefault();
     this.authService.logout();
-  }
-
-  public CancelarDesafio(event:Event){
-    event.preventDefault();
-    localStorage.setItem("desafiado", "")
-    this.router.navigate(['/HomeMultiplayer', this.userName]);
   }
 }

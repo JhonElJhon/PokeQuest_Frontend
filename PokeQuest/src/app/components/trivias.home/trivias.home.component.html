@@ -12,19 +12,30 @@
     <div class="pokedex-container">
         <div class="pokedex-screen">
             <div class="header">
-                <h1><span class="poke">POKE</span><span class="quest">TRIVIAS</span></h1>
-                <nav class="main-nav">
+                <h1 *ngIf="!desafiado"><span class="poke">POKE</span><span class="quest">TRIVIAS</span></h1>
+                <h1 *ngIf="desafiado"><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
+                <nav class="main-nav" *ngIf="!desafiado">
                     <a href="" (click)="IrAMultijugador($event)" role="button" tabindex="0" class="nav-button">Multijugador</a>
                     <a href="" (click)="IrAPerfil($event)" role="button" tabindex="0"class="nav-button">Perfil</a>
                     <a href="" (click)="IrAHome($event)" role="button" tabindex="0" class="nav-button">Home</a>
+                    <a href="" (click)="LogOut($event)" role="button" tabindex="0" class="nav-button">Quests</a>
+                    <a href="" (click)="LogOut($event)" role="button" tabindex="0" class="nav-button">Cerrar sesión</a>
                 </nav>
             </div>
 
-            <div class="welcome-message">
+            <div class="welcome-message" *ngIf="!desafiado">
                 <h2>¡Bienvenido a PokéTrivias!</h2>
                 <p>Demuestra tus conocimientos y atrápalos a todos con tus respuestas.</p>
                 <p>Busca por tipo de Pokémon o busca tu Pokémon favorito!</p>
                 <p class="highlight">¡Que comience la aventura!</p>
+            </div>
+
+            <div class="welcome-message" *ngIf="desafiado">
+                <h2>¡Bienvenido a PokéQuest!</h2>
+                <p>Estás retando a {{desafiado}}!</p>
+                <p>Completa una trivia y espera que {{desafiado}} acepte tu desafío!</p>
+                <p class="highlight">¡Buena suerte!</p>
+                <a href="" (click)="CancelarDesafio($event)" role="button" tabindex="0" class="nav-button" style="background-color: red; border-color: red;">Cancelar Desafío</a>
             </div>
 
             <div class="trivia-options">
@@ -65,8 +76,12 @@
                 </div>
             </div>
 
-            <button class="start-button" (click)="ComenzarTrivia()">
+            <button class="start-button" (click)="ComenzarTrivia()" *ngIf="!desafiado">
                 <i class="fas fa-play"></i> ¡Comenzar Trivia!
+            </button>
+
+            <button class="start-button" (click)="ComenzarTrivia()" *ngIf="desafiado">
+                <i class="fas fa-play"></i> ¡Comenzar Desafío!
             </button>
         </div>
     </div>

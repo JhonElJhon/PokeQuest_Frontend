@@ -43,7 +43,9 @@ export class PerfilComponent implements OnInit {
     fechaInicio: '10/05/2023',
     puntaje: 1250,
     trivias: 8,
-    avatar: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    avatar: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+    victorias: 0,
+    derrotas: 0
   };
 
   // Estados de edición y modal

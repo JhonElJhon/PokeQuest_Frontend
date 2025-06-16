@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEQUEST - Trivias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="desafios.component.css">
+</head>
+<body>
+    <div class="pokedex-container">
+        <div class="pokedex-screen">
+            <div class="header">
+                <h1><span class="poke">POKE</span><span class="quest">QUESTS</span></h1>
+                <a href="index.html" class="back-button" (click)="IrAMultijugador($event)" role="button">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <div class="welcome-message">
+                <h2>¡Bienvenido a PokéQuests!</h2>
+                <p>Prepárate para desafiar a otros jugadores y aceptar nuevos desafíos!</p>
+                <p>Busca algún jugador o revisa tu bandeja de desafíos</p>
+                <p class="highlight">¡Buena suerte!</p>
+            </div>
+
+            <div class="trivia-options">
+                <div class="search-section">
+                    <h3><i class="fas fa-search"></i> Buscar Pokémon específico</h3>
+                    <div class="search-input" #searchContainer>
+                        <input type="text" placeholder="Ej: Pikachu" [(ngModel)]="busqueda" (focus)="showSuggestions = true"
+                    (input)="filterPokemon()">
+                    <!-- Suggestion Box -->
+                    <div class="suggestion-box" *ngIf="showSuggestions && filteredPokemonList.length > 0">
+                        <button *ngFor="let pokemon of filteredPokemonList" 
+                                class="suggestion-item"
+                                (click)="selectPokemon(pokemon)">
+                            {{ pokemon }}
+                        </button>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="option-card type-selection">
+                    <h3><i class="fas fa-dragon"></i> Tipo de Pokémon</h3>
+                    <div class="type-buttons" *ngFor="let tipo of listaTipos" (click)="SeleccionTipo(tipo)">
+                        <button
+                            [class]="tipo.toLowerCase()" 
+                            [class.selected]="tipo === tipoSeleccionado">
+                            {{tipo}}</button>
+                    </div>
+                </div>
+
+                <div class="option-card time-selection">
+                    <h3><i class="fas fa-list-ol"></i> Cantidad de preguntas</h3>
+                    <div class="time-buttons" >
+                        <button [class]="timebutton"
+                                [class.selected]="num === numSeleccionado"
+                                *ngFor="let num of listaNums" (click)="SeleccionNum(num)">{{num}}
+                                </button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="start-button" (click)="ComenzarTrivia()">
+                <i class="fas fa-play"></i> ¡Comenzar Trivia!
+            </button>
+        </div>
+    </div>
+</body>
+</html>
