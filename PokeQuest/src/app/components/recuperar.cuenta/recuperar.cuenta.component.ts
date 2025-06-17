@@ -24,7 +24,7 @@ export class RecuperarCuentaComponent {
   errorMessage = '';
 
   sendEmail(): void{
-    this.http.post('https://localhost:5001/email/sendEmail', {
+    this.http.post('https://pokequestapi.onrender.com/email/sendEmail', {
       to: this.userData.email,
     }).subscribe({
       next: () => {
@@ -42,7 +42,7 @@ export class RecuperarCuentaComponent {
     }
     this.loading = true;
     this.errorMessage = '';
-    this.http.post('https://localhost:5001/email/verify', {
+    this.http.post('https://pokequestapi.onrender.com/email/verify', {
       correo: this.userData.email,
       verificacion: this.userData.verify,
       password: this.userData.password
