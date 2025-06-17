@@ -6,7 +6,7 @@
     <title>POKEQUEST - Registro</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="register.component.css"> <!-- Reutilizamos los mismos estilos -->
+    <link rel="stylesheet" href="recuperar.cuenta.component.css"> <!-- Reutilizamos los mismos estilos -->
 </head>
 <body>
     <a href="index.html" class="back-button" (click)="IrAUser($event)">
@@ -17,36 +17,20 @@
         <div class="pokedex-screen">
             <div class="welcome-message">
                 <h1><span class="poke">POKE</span><span class="quest">QUEST</span></h1>
-                <p class="subtitle">Registro de entrenador</p>
+                <p class="subtitle">Recuperar contraseña</p>
             </div>
 
             <div class="login-form">
-                <h2>Crear cuenta</h2>
+                <h2>Formulario</h2>
                 
-                <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
-                    <div class="input-group">
-                        <label for="username">Nombre de usuario</label>
-                        <input type="text" id="username" name="username" class="pokedex-input" 
-                            [(ngModel)]="userData.username" required minlength="4"
-                            placeholder="Mín. 4 caracteres"
-                            #username="ngModel">
-                        <div *ngIf="username.invalid && (username.dirty || username.touched)" 
-                            class="error-message">
-                            <div *ngIf="username.errors?.['required']">
-                                Nombre de usuario es requerido
-                            </div>
-                            <div *ngIf="username.errors?.['minlength']">
-                                Mínimo 4 caracteres
-                            </div>
-                        </div>
-                    </div>
-        
+                <form #registerForm="ngForm">
                     <div class="input-group">
                         <label for="email">Correo electrónico</label>
                         <input type="email" id="email" name="email" class="pokedex-input" 
                             [(ngModel)]="userData.email" required email
                             placeholder="tunombre@ejemplo.com"
                             #email="ngModel">
+                            <button (click)="sendEmail()"> Enviar Código</button>
                         <div *ngIf="email.invalid && (email.dirty || email.touched)" 
                             class="error-message">
                             <div *ngIf="email.errors?.['required']">
@@ -54,6 +38,23 @@
                             </div>
                             <div *ngIf="email.errors?.['email']">
                                 Formato de email inválido
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="username">Codigo de verificación</label>
+                        <input type="text" id="username" name="username" class="pokedex-input" 
+                            [(ngModel)]="userData.verify" required minlength="4"
+                            placeholder="Mín. 4 caracteres"
+                            #username="ngModel">
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)" 
+                            class="error-message">
+                            <div *ngIf="username.errors?.['required']">
+                                Codigo de verificación es requerido
+                            </div>
+                            <div *ngIf="username.errors?.['minlength']">
+                                Mínimo 4 caracteres
                             </div>
                         </div>
                     </div>
@@ -94,7 +95,7 @@
                         </div>
                     </div>
         
-                    <button type="submit" class="pokedex-button" 
+                    <button type="submit" class="pokedex-button"  (click)="onSubmit()"
                             [disabled]="!registerForm.form.valid || loading">
                         <span *ngIf="!loading">Registrarse</span>
                         <span *ngIf="loading">Registrando...</span>

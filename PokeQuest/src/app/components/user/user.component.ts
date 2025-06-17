@@ -50,4 +50,8 @@ export class UserComponent {
     this.router.navigate(['/register']);
   }
 
+  public IrARecuperar(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/recuperar']);
+  }
 }

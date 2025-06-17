@@ -14,6 +14,7 @@ import { StartTriviaComponent } from './components/start.trivia/start.trivia.com
 import { MultiplayerHomeComponent } from './components/multiplayer.home/multiplayer.home.component';
 import { AuthGuard } from './auth.guard';
 import { DesafiosComponent } from './components/desafios/desafios.component';
+import { RecuperarCuentaComponent } from './components/recuperar.cuenta/recuperar.cuenta.component';
 
 
 
@@ -59,6 +60,11 @@ const routeConfig: Routes = [
       path: 'register',
       component: RegisterComponent,
       title: 'register',
+    },
+    {
+      path: 'recuperar',
+      component: RecuperarCuentaComponent,
+      title: 'recuperar',
     },
     {
       path: 'Ability',
