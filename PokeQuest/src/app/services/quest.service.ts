@@ -16,8 +16,8 @@ import { IQuest } from '../interfaces/quest.interface';
     providedIn: 'root'
 })
 export class QuestService {
-    private jhonElJhonApiUrl: string = 'https://localhost:5001';
-    //private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
+    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient
