@@ -151,6 +151,11 @@ export class TriviasHomeComponent {
     this.authService.logout();
   }
 
+  public IrADesafios(event: Event){
+    event.preventDefault();
+    this.router.navigate(['/Desafios', this.userName]);
+  }
+
   public CancelarDesafio(event:Event){
     event.preventDefault();
     localStorage.setItem("desafiado", "")

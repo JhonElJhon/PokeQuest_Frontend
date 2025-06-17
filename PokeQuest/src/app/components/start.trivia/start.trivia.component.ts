@@ -37,6 +37,10 @@ export class StartTriviaComponent {
   public tipo: string | null = '';
   public cantPreguntas: string | null = '';
   public desafiado: string | null = '';
+  public puntajeASuperar: string | null = '';
+  public codigo: string | null = '';
+  public trivias: string | null = '';
+  public retador: string | null = '';
   public texto = "Siguiente Pregunta";
   public optionButton = 'optionButton';
   // 3-minute timer variables
@@ -62,6 +66,11 @@ export class StartTriviaComponent {
     this.tipo = localStorage.getItem("tipo");
     this.cantPreguntas = localStorage.getItem("cantPreguntas");
     this.desafiado = localStorage.getItem("desafiado");
+    this.codigo = localStorage.getItem("codigo");
+    this.trivias = localStorage.getItem("trivias");
+    this.puntajeASuperar = localStorage.getItem("puntajeASuperar");
+    this.retador = localStorage.getItem("retador")
+
     this.ObtenerTrivias();
     this.startCountdown();
   }
@@ -166,59 +175,36 @@ export class StartTriviaComponent {
 
 
   ObtenerTrivias(){
-    this.triviaService.getTriviasByFilter(this.pokemon, this.tipo, this.cantPreguntas)
-      .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(
-            res => {
-                this.listaTrivias = res;
-                this.SiguientePregunta();
-            },
-            error => {
-                console.log(error);
-                localStorage.setItem("error", "true");
-                this.router.navigate(['/homeTrivias', this.userName]);
-                /*this.listaTrivias = [
-                                      {
-                                        "pokemon": "Dratini",
-                                        "pregunta": "¿Qué apariencia tiene al nacer?",
-                                        "respuestas": [
-                                          "Serpiente marina",
-                                          "Dragón bebé",
-                                          "Gusano",
-                                          "Pez pequeño"
-                                        ],
-                                        "respuestaCorrecta": "Serpiente marina",
-                                        "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png"
-                                      },
-                                      {
-                                        "pokemon": "Dragonair",
-                                        "pregunta": "¿Qué simbolizan las esferas de su cuerpo?",
-                                        "respuestas": [
-                                          "Edad",
-                                          "Poder místico",
-                                          "Evolución",
-                                          "Control climático"
-                                        ],
-                                        "respuestaCorrecta": "Poder místico",
-                                        "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"
-                                      },
-                                      {
-                                        "pokemon": "Dragonite",
-                                        "pregunta": "¿Cuánto mide su envergadura?",
-                                        "respuestas": [
-                                          "4.1 m",
-                                          "2.7 m",
-                                          "3.5 m",
-                                          "2.0 m"
-                                        ],
-                                        "respuestaCorrecta": "2.7 m",
-                                        "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png"
-                                      }
-                                    ];
-                this.SiguientePregunta();
-                */
-            }
-    );
+    if(this.trivias){
+      this.triviaService.getTriviasByIdList(this.trivias)
+            .pipe(takeUntil(this.ngUnsubscribe))
+              .subscribe(
+                  res => {
+                      this.listaTrivias = res;
+                      this.SiguientePregunta();
+                  },
+                  error => {
+                      console.log(error);
+                      localStorage.setItem("error", "true");
+                      this.router.navigate(['/homeTrivias', this.userName]);
+                  }
+          );
+    }
+    else{
+      this.triviaService.getTriviasByFilter(this.pokemon, this.tipo, this.cantPreguntas)
+            .pipe(takeUntil(this.ngUnsubscribe))
+              .subscribe(
+                  res => {
+                      this.listaTrivias = res;
+                      this.SiguientePregunta();
+                  },
+                  error => {
+                      console.log(error);
+                      localStorage.setItem("error", "true");
+                      this.router.navigate(['/homeTrivias', this.userName]);
+                  }
+          );
+    }
   }
   ElegirRespuesta(respuesta: string){
     if(this.puedeResponder){
@@ -289,25 +275,51 @@ export class StartTriviaComponent {
         );
     }
     else{
-      this.listaCodigos = this.listaCodigos.slice(0,this.listaCodigos.length - 1);
-      localStorage.setItem("desafiado", "");
-      console.log("codigos: " + this.listaCodigos);
-      let questData = {
-        retador: this.userName,
-        desafiado: this.desafiado,
-        puntajeASuperar: this.puntosASuperar,
-        trivias: this.listaCodigos,
+      if(this.trivias){
+        let alterModelData = {
+          codigo: this.codigo,
+          retador: this.retador,
+          desafiado: this.desafiado,
+          puntajeASuperar: this.puntajeASuperar,
+          puntosDesafiado: this.puntosASuperar
+        }
+        localStorage.setItem("desafiado", "");
+        localStorage.setItem("codigo", "");
+        localStorage.setItem("trivias", "");
+        localStorage.setItem("puntajeASuperar", "");
+        localStorage.setItem("retador", "")                    
+        this.QuestService.updateQuest(alterModelData)
+          .pipe(takeUntil(this.ngUnsubscribe))
+            .subscribe(
+                res => {
+                  console.log(res)
+                },
+                error => {
+                    console.log(error);
+                }
+            );
       }
-      this.QuestService.createQuest(questData)
-      .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(
-            res => {
-              console.log(res)
-            },
-            error => {
-                console.log(error);
-            }
-        );
+      else{
+        this.listaCodigos = this.listaCodigos.slice(0,this.listaCodigos.length - 1);
+        localStorage.setItem("desafiado", "");
+        console.log("codigos: " + this.listaCodigos);
+        let questData = {
+          retador: this.userName,
+          desafiado: this.desafiado,
+          puntajeASuperar: this.puntosASuperar,
+          trivias: this.listaCodigos,
+        }
+        this.QuestService.createQuest(questData)
+        .pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe(
+              res => {
+                console.log(res)
+              },
+              error => {
+                  console.log(error);
+              }
+          );
+      }
     }
   }
 }

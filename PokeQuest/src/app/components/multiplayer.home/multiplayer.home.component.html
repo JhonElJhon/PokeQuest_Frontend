@@ -28,7 +28,7 @@
 
             <!-- Ranking de jugadores -->
             <div class="ranking-section" *ngIf="!busqueda">
-                <h2><i class="fas fa-trophy"></i> Top 10 Entrenadores</h2>
+                <h2><i class="fas fa-trophy"></i> Top 5 Entrenadores</h2>
                 <div class="table-container">
                     <table class="players-table">
                         <thead>
@@ -62,7 +62,7 @@
 
             <!-- Buscando todos los jugadores -->
             <div class="ranking-section" *ngIf="busqueda">
-                <h2><i class="fas fa-trophy"></i> Top 10 coincidencias </h2>
+                <h2><i class="fas fa-trophy"></i> Top 5 coincidencias </h2>
                 <div class="table-container">
                     <table class="players-table">
                         <thead>
@@ -77,7 +77,7 @@
                         <tbody>
                             <!-- Ejemplo con datos estáticos -->
                             <tr class="player-row" *ngFor="let player of filteredPlayerList">
-                                <td>{{topPlayers.indexOf(player) + 1}}</td>
+                                <td>{{allUsers.indexOf(player) + 1}}</td>
                                 <td>
                                     <img [src]="player.avatar" [alt]="player.nombre" class="player-avatar">
                                     {{player.nombre}}

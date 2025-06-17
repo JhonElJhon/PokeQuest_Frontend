@@ -74,31 +74,31 @@ const routeConfig: Routes = [
       path: 'perfil/:nombre',
       component: PerfilComponent,
       title: 'perfil',
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
     },
     {
       path: 'homeTrivias/:nombre',
       component: TriviasHomeComponent,
       title: 'homeTrivias',
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
     },
     {
       path: 'startTrivia/:nombre',
       component: StartTriviaComponent,
       title: 'startTrivia',
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
     },
     {
       path: 'HomeMultiplayer/:nombre',
       component: MultiplayerHomeComponent,
       title: 'HomeMultiplayer',
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
     },
     {
       path: 'Desafios/:nombre',
       component: DesafiosComponent,
       title: 'Desafios',
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
     },
   ];
   export default routeConfig;

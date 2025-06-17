@@ -16,6 +16,76 @@ body {
     color: #333;
 }
 
+/* Tabla de ranking */
+.ranking-section {
+    margin-bottom: 20px;
+}
+
+.ranking-section h2 {
+    color: #DE0A0A;
+    font-size: 1em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7em;
+}
+
+.players-table th, .players-table td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 2px solid #bdc3c7;
+}
+
+.players-table th {
+    background: #2c3e50;
+    color: white;
+}
+
+.players-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.players-table tr:hover {
+    background-color: #e6f3ff;
+    cursor: pointer;
+}
+
+.player-avatar {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+/* Detalles del jugador */
+.player-details {
+    display: none;
+    background: white;
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 /* Contenedor Pokedex */
 .pokedex-container {
     width: 100%;
@@ -128,6 +198,29 @@ body {
 .highlight {
     color: #27ae60;
     font-size: 0.8em;
+}
+.profile-button, .challenge-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.7em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.challenge-button {
+    background: #27ae60;
+    color: white;
+    border-bottom: 3px solid #1e8449;
+}
+
+.challenge-button:hover {
+    background: #2ecc71;
 }
 
 /* Opciones de trivia */

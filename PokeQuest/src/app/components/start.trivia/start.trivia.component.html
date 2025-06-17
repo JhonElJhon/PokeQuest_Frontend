@@ -24,8 +24,8 @@
 
             <!-- Contenedor de pregunta -->
             <div class="question-container">
-                <h2 class="question-text">{{pokemonActual}}</h2>
-                <div class="pokemon-image">
+                <h2 class="question-text" *ngIf="hayJuego">{{pokemonActual}}</h2>
+                <div class="pokemon-image" *ngIf="hayJuego">
                     <img [src]="spriteActual" [alt]=pokemonActual>
                 </div>
                 <h2 class="question-text">{{preguntaActual}}</h2>

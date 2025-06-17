@@ -10,13 +10,14 @@ import { IMove } from '../interfaces/move.interface';
 import { IEvolutionChain } from '../interfaces/evolution_chain.interface';
 import { ISpecie } from '../interfaces/specie.interface';
 import { ITrivia } from '../interfaces/trivia.interface';
+import { IQuest } from '../interfaces/quest.interface';
 
 @Injectable({
     providedIn: 'root'
 })
 export class QuestService {
-    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
-    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
+    private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    //private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient
@@ -26,7 +27,11 @@ export class QuestService {
         return this.httpClient.post(`${this.jhonElJhonApiUrl}/quest/createQuest`, questData);
     }
 
-    getTriviasByFilter(pokemon: string | null, type: string | null, cant: string | null): Observable<ITrivia[]> {
-        return this.httpClient.get(`${this.jhonElJhonApiUrl}/trivia/getTriviasByFilter/${pokemon}/${type}/${cant}`).pipe(map(res => <ITrivia[]>res));
+    getQuestsByUser(usuario: string): Observable<IQuest[]>{
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/quest/getQuestsByUser/${usuario}`).pipe(map(res => <IQuest[]>res));
+    }
+
+    updateQuest(alterModelData: {codigo: string | null; retador: string | null; desafiado: string | null; puntajeASuperar: string | null; puntosDesafiado: number}): Observable<any>{
+        return this.httpClient.put(`${this.jhonElJhonApiUrl}/quest/alterQuest`, alterModelData);
     }
 }

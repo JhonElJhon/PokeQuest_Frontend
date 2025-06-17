@@ -15,8 +15,8 @@ import { ITrivia } from '../interfaces/trivia.interface';
     providedIn: 'root'
 })
 export class TriviaService {
-    //private jhonElJhonApiUrl: string = 'https://localhost:5001';
-    private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
+    private jhonElJhonApiUrl: string = 'https://localhost:5001';
+    //private jhonElJhonApiUrl: string = 'https://pokequestapi.onrender.com';
 
     constructor(
         private httpClient: HttpClient
@@ -24,5 +24,9 @@ export class TriviaService {
 
     getTriviasByFilter(pokemon: string | null, type: string | null, cant: string | null): Observable<ITrivia[]> {
         return this.httpClient.get(`${this.jhonElJhonApiUrl}/trivia/getTriviasByFilter/${pokemon}/${type}/${cant}`).pipe(map(res => <ITrivia[]>res));
+    }
+
+    getTriviasByIdList(trivias: string | null): Observable<ITrivia[]> {
+        return this.httpClient.get(`${this.jhonElJhonApiUrl}/trivia/getTriviasByIds/${trivias}`).pipe(map(res => <ITrivia[]>res));
     }
 }

@@ -13,59 +13,42 @@
         <div class="pokedex-screen">
             <div class="header">
                 <h1><span class="poke">POKE</span><span class="quest">QUESTS</span></h1>
-                <a href="index.html" class="back-button" (click)="IrAMultijugador($event)" role="button">
+                <a href="index.html" class="back-button" (click)="IrAHomeTrivias($event)" role="button">
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
 
-            <div class="welcome-message">
-                <h2>¡Bienvenido a PokéQuests!</h2>
-                <p>Prepárate para desafiar a otros jugadores y aceptar nuevos desafíos!</p>
-                <p>Busca algún jugador o revisa tu bandeja de desafíos</p>
-                <p class="highlight">¡Buena suerte!</p>
-            </div>
-
-            <div class="trivia-options">
-                <div class="search-section">
-                    <h3><i class="fas fa-search"></i> Buscar Pokémon específico</h3>
-                    <div class="search-input" #searchContainer>
-                        <input type="text" placeholder="Ej: Pikachu" [(ngModel)]="busqueda" (focus)="showSuggestions = true"
-                    (input)="filterPokemon()">
-                    <!-- Suggestion Box -->
-                    <div class="suggestion-box" *ngIf="showSuggestions && filteredPokemonList.length > 0">
-                        <button *ngFor="let pokemon of filteredPokemonList" 
-                                class="suggestion-item"
-                                (click)="selectPokemon(pokemon)">
-                            {{ pokemon }}
-                        </button>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="option-card type-selection">
-                    <h3><i class="fas fa-dragon"></i> Tipo de Pokémon</h3>
-                    <div class="type-buttons" *ngFor="let tipo of listaTipos" (click)="SeleccionTipo(tipo)">
-                        <button
-                            [class]="tipo.toLowerCase()" 
-                            [class.selected]="tipo === tipoSeleccionado">
-                            {{tipo}}</button>
-                    </div>
-                </div>
-
-                <div class="option-card time-selection">
-                    <h3><i class="fas fa-list-ol"></i> Cantidad de preguntas</h3>
-                    <div class="time-buttons" >
-                        <button [class]="timebutton"
-                                [class.selected]="num === numSeleccionado"
-                                *ngFor="let num of listaNums" (click)="SeleccionNum(num)">{{num}}
+            <div class="ranking-section">
+                <h2><i class="fas fa-trophy"></i> Desafíos:</h2>
+                <nav class="main-nav">
+                    <a href="" (click)="FiltrarDesafios('todos', $event)" role="button" tabindex="0" class="nav-button">Todos</a>
+                    <a href="" (click)="FiltrarDesafios('pendientes', $event)" role="button" tabindex="0"class="nav-button">Pendientes</a>
+                    <a href="" (click)="FiltrarDesafios('ganados', $event)" role="button" tabindex="0" class="nav-button">Ganados</a>
+                    <a href="" (click)="FiltrarDesafios('perdidos', $event)" role="button" tabindex="0" class="nav-button">Perdidos</a>
+                </nav>
+                <div class="table-container">
+                    <table class="players-table">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Puntos</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo con datos estáticos -->
+                            <tr class="player-row" *ngFor="let desafio of listaDesafiosFiltrados">
+                                <td>{{desafio.descripcion}}</td>
+                                <td>{{desafio.puntajeASuperar}}</td>
+                                <td>{{desafio.estado}}</td>
+                                <button class="challenge-button" (click)="AceptarDesafio(desafio)" *ngIf="desafio.debeAceptar">
+                                    <i class="fas fa-bolt"></i> Aceptar
                                 </button>
-                    </div>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-            <button class="start-button" (click)="ComenzarTrivia()">
-                <i class="fas fa-play"></i> ¡Comenzar Trivia!
-            </button>
         </div>
     </div>
 </body>

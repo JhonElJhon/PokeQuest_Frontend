@@ -6,7 +6,20 @@ import { AuthService } from '../../services/auth.service';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { IPlayer } from '../../interfaces/player.interface';
+import { IUserProfile } from '../../interfaces/userProfile.interface';
+import { IQuest } from '../../interfaces/quest.interface';
+import { QuestService } from '../../services/quest.service';
+interface desafiosFiltrados{
+  retador: string,
+  desafiado: string,
+  codigo: number,
+  trivias: string,
+  descripcion: string,
+  puntajeASuperar: number,
+  estado: string,
+  debeAceptar: boolean
+}
 @Component({
   selector: 'app-desafios',
   imports: [FormsModule, CommonModule],
@@ -17,7 +30,7 @@ export class DesafiosComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private pokemonService: PokemonService,
+    private questService: QuestService,
     private authService: AuthService
   ){}
   private ngUnsubscribe: Subject<void> = new Subject<void>();
@@ -27,87 +40,47 @@ export class DesafiosComponent {
     this.ngUnsubscribe.complete();
   }
   public userName = '';
-  public desafiado: string | null = '';
   ngOnInit(): void {
     this.route.params.subscribe(params => {
           const UserName = params['nombre'];
           this.userName = UserName;
         });
-    localStorage.setItem("cantPreguntas", "");
-    localStorage.setItem("tipo", "");
-    localStorage.setItem("pokemon", "");
-    this.desafiado = localStorage.getItem("desafiado");
-    this.ObtenerTodosPokemones();
-    this.busqueda = this.desafiado;
+    this.ObtenerTodosLosDesafios(this.userName);
   }
 
-  public listaTipos = ['Todos', 'Agua', 'Fuego', 'Planta', 'Eléctrico', 'Psíquico', 'Siniestro', 'Tierra', 
-    'Normal', 'Bicho', 'Volador', 'Lucha', 'Veneno', 'Roca', 'Fantasma', 'Acero', 'Hielo', 'Dragón', 'Hada'];
-
-  public listaNums = [3, 5, 10]
-  public tipoSeleccionado = 'Todos';
-  public numSeleccionado = 3;
-  public timebutton = 'time-button';
-  public busqueda: string | null = '';
-  public showSuggestions = false;
-  public pokemonList: string[] = []; // Populate this with all Pokemon names
-  public filteredPokemonList: string[] = [];
-
-  public pokemon: IHomePokemon = {
-    id: 0,
-    nombre: "",
-    tipos: [],
-    spriteURL: ""
-  }
-  public pokemonesFiltrados: IHomePokemon[] = [];
-
- @ViewChild('searchContainer') searchContainer!: ElementRef;
-
-  filterPokemon() {
-    if (!this.busqueda) {
-      this.filteredPokemonList = [];
-      return;
-    }
-    
-    const searchTerm = this.busqueda.toLowerCase();
-    this.filteredPokemonList = this.pokemonList.filter(name => 
-      name.toLowerCase().startsWith(searchTerm)
-    );
+  public quest: IQuest = {
+    codigo: 0,
+    retador: '',
+    desafiado: '',
+    completado: false,
+    puntajeASuperar: 0,
+    trivias: '',
+    ganador: '',
+    fechaCreacion: '',
   }
 
-  selectPokemon(pokemon: string) {
-    this.busqueda = pokemon;
-    this.showSuggestions = false;
-    // Call your search function if needed
-    this.BuscarPokemones(pokemon);
+  public filtrado: desafiosFiltrados = {
+    codigo: 0,
+    trivias: "",
+    descripcion: "",
+    puntajeASuperar: 0,
+    estado: "",
+    debeAceptar: false,
+    desafiado: '',
+    retador: ''
   }
 
-  // Close suggestions when clicking outside
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent) {
-    if (!this.searchContainer.nativeElement.contains(event.target)) {
-      this.showSuggestions = false;
-    }
-  }
-  public SeleccionTipo(tipo: string){
-    this.tipoSeleccionado = tipo
-    console.log(this.tipoSeleccionado);
-  }
+  public listaDesafios: IQuest[] = [];
+  public listaDesafiosFiltrados: desafiosFiltrados[] = [];
+  public filtro = "Todos";
 
-  public SeleccionNum(num: number){
-    this.numSeleccionado = num
-    console.log(this.numSeleccionado);
-  }
-
-  public ObtenerTodosPokemones(){
-    this.pokemonService.getPokemonsByFilter("%20", "%20")
+  public ObtenerTodosLosDesafios(usuario: string){
+    this.questService.getQuestsByUser(usuario)
     .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe(
               res => {
-                  this.pokemonesFiltrados = res;
-                  for(let i = 0; i<this.pokemonesFiltrados.length; i++){
-                    this.pokemonList.push(this.pokemonesFiltrados[i].nombre)
-                  }
+                this.listaDesafios = res;
+                this.FiltrarDesafiosDefault("todos");
               },
               error => {
                   console.log(error);
@@ -115,30 +88,89 @@ export class DesafiosComponent {
           );
   }
 
-  public BuscarPokemones(busqueda: string){
-    console.log(this.busqueda);
-  }
-  public IrAHome(event: Event){
-    event.preventDefault()
-    this.router.navigate(['']);
-  }
-  public IrAPerfil(event: Event){
-    event.preventDefault()
-    this.router.navigate(['/perfil', this.userName]);
-  }
-  public ComenzarTrivia(){
-    
-  }
-  public IrATrivia(){
-    this.router.navigate(['startTrivia', this.userName]);
-  }
-  public IrAMultijugador(event: Event){
+  public FiltrarDesafios(filtro: string, event: Event){
     event.preventDefault();
-    this.router.navigate(['/HomeMultiplayer', this.userName]);
+    let listaVacia: desafiosFiltrados[] = []
+    this.listaDesafiosFiltrados = listaVacia;
+    for(let i = 0; i<this.listaDesafios.length; i++){
+      let filtrado2: desafiosFiltrados = {
+        codigo: 0,
+        descripcion: "",
+        trivias: '',
+        puntajeASuperar: 0,
+        estado: '',
+        debeAceptar: false,
+        desafiado: '',
+        retador: ''
+      }
+      filtrado2.descripcion = this.listaDesafios[i].retador == this.userName ? "Has desafiado a " + this.listaDesafios[i].desafiado : "Has sido desafiado por " + this.listaDesafios[i].retador;
+      if(this.listaDesafios[i].completado){
+        filtrado2.estado = this.listaDesafios[i].ganador == this.userName ? "Ganado" : "Perdido";
+      }
+      else{
+        filtrado2.estado = "Pendiente";
+      }
+      filtrado2.debeAceptar = this.listaDesafios[i].desafiado == this.userName && !this.listaDesafios[i].completado;
+      filtrado2.puntajeASuperar = this.listaDesafios[i].puntajeASuperar;
+      filtrado2.trivias = this.listaDesafios[i].trivias;
+      filtrado2.desafiado = this.listaDesafios[i].desafiado;
+      filtrado2.retador = this.listaDesafios[i].retador;
+      filtrado2.codigo = this.listaDesafios[i].codigo;
+      if(filtro == "todos") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "pendientes" && filtrado2.estado == "Pendiente") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "ganados" && filtrado2.estado == "Ganado") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "perdidos" && filtrado2.estado == "Perdido") this.listaDesafiosFiltrados.push(filtrado2);
+    }
   }
 
-  public LogOut(event: Event){
-    event.preventDefault();
-    this.authService.logout();
+  public FiltrarDesafiosDefault(filtro: string){
+    let listaVacia: desafiosFiltrados[] = []
+    this.listaDesafiosFiltrados = listaVacia;
+    for(let i = 0; i<this.listaDesafios.length; i++){
+      let filtrado2: desafiosFiltrados = {
+        codigo: 0,
+        descripcion: "",
+        trivias: '',
+        puntajeASuperar: 0,
+        estado: '',
+        debeAceptar: false,
+        desafiado: '',
+        retador: ''
+      }
+      filtrado2.descripcion = this.listaDesafios[i].retador == this.userName ? "Has desafiado a " + this.listaDesafios[i].desafiado : "Has sido desafiado por " + this.listaDesafios[i].retador;
+      if(this.listaDesafios[i].completado){
+        filtrado2.estado = this.listaDesafios[i].ganador == this.userName ? "Ganado" : "Perdido";
+      }
+      else{
+        filtrado2.estado = "Pendiente";
+      }
+      filtrado2.debeAceptar = this.listaDesafios[i].desafiado == this.userName && !this.listaDesafios[i].completado;
+      filtrado2.puntajeASuperar = this.listaDesafios[i].puntajeASuperar;
+      filtrado2.trivias = this.listaDesafios[i].trivias;
+      filtrado2.desafiado = this.listaDesafios[i].desafiado;
+      filtrado2.retador = this.listaDesafios[i].retador;
+      filtrado2.codigo = this.listaDesafios[i].codigo;
+      if(filtro == "todos") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "pendientes" && filtrado2.estado == "Pendiente") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "ganados" && filtrado2.estado == "Ganado") this.listaDesafiosFiltrados.push(filtrado2);
+      if(filtro == "perdidos" && filtrado2.estado == "Perdido") this.listaDesafiosFiltrados.push(filtrado2);
+    }
+  }
+
+  public AceptarDesafio(desafio: desafiosFiltrados){
+    localStorage.setItem("trivias", desafio.trivias);
+    localStorage.setItem("desafiado", desafio.desafiado);
+    localStorage.setItem("codigo", desafio.codigo.toString());
+    localStorage.setItem("puntajeASuperar", desafio.puntajeASuperar.toString())
+    localStorage.setItem("retador", desafio.retador)
+    this.IrATrivia();
+  }
+  public IrATrivia(){
+    this.router.navigate(['/startTrivia', this.userName]);
+  }
+
+  public IrAHomeTrivias(event: Event){
+    event.preventDefault()
+    this.router.navigate(['/homeTrivias', this.userName]);
   }
 }
